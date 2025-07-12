@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://nxejjx6lux6y"]
+
+[ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/character.gd" id="1_oxp8w"]
+[ext_resource type="Script" uid="uid://byxcvb8cjhw4a" path="res://scripts/attribute.gd" id="2_7sfm4"]
+[ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/pile.gd" id="3_7sfm4"]
+[ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/health.gd" id="4_i431l"]
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/card.gd" id="5_dw4jg"]
+[ext_resource type="Script" uid="uid://b5vi6tkuxmwiy" path="res://scripts/attack_effect.gd" id="6_0npn6"]
+[ext_resource type="Script" uid="uid://chmwncuf2hdas" path="res://scripts/weakness.gd" id="7_0npn6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("1_oxp8w")
+metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
+
+[node name="Skills" type="Node" parent="Player"]
+
+[node name="Strength" type="Node" parent="Player/Skills"]
+script = ExtResource("2_7sfm4")
+value = 17
+metadata/_custom_type_script = "uid://byxcvb8cjhw4a"
+
+[node name="Intelligence" type="Node" parent="Player/Skills"]
+script = ExtResource("2_7sfm4")
+value = 12
+metadata/_custom_type_script = "uid://byxcvb8cjhw4a"
+
+[node name="Dexterity" type="Node" parent="Player/Skills"]
+script = ExtResource("2_7sfm4")
+value = 14
+metadata/_custom_type_script = "uid://byxcvb8cjhw4a"
+
+[node name="Wisdom" type="Node" parent="Player/Skills"]
+script = ExtResource("2_7sfm4")
+value = 8
+metadata/_custom_type_script = "uid://byxcvb8cjhw4a"
+
+[node name="Persuasion" type="Node" parent="Player/Skills"]
+script = ExtResource("2_7sfm4")
+metadata/_custom_type_script = "uid://byxcvb8cjhw4a"
+
+[node name="Constitution" type="Node" parent="Player/Skills"]
+script = ExtResource("2_7sfm4")
+value = 16
+metadata/_custom_type_script = "uid://byxcvb8cjhw4a"
+
+[node name="Health" type="Node" parent="Player"]
+script = ExtResource("4_i431l")
+metadata/_custom_type_script = "uid://crfstdtmbnfuv"
+
+[node name="Piles" type="Node" parent="Player"]
+
+[node name="Hand" type="Node" parent="Player/Piles"]
+script = ExtResource("3_7sfm4")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Draw" type="Node" parent="Player/Piles"]
+script = ExtResource("3_7sfm4")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Deck" type="Node" parent="Player/Piles"]
+script = ExtResource("3_7sfm4")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Card" type="Node" parent="Player/Piles/Deck"]
+script = ExtResource("5_dw4jg")
+element = 1
+modifier = 2
+is_exhaust = true
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="AttackEffect" type="Node" parent="Player/Piles/Deck/Card"]
+script = ExtResource("6_0npn6")
+metadata/_custom_type_script = "uid://b5vi6tkuxmwiy"
+
+[node name="Discard" type="Node" parent="Player/Piles"]
+script = ExtResource("3_7sfm4")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Exhaust" type="Node" parent="Player/Piles"]
+script = ExtResource("3_7sfm4")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Weaknesses" type="Node" parent="Player"]
+
+[node name="Fire" type="Node" parent="Player/Weaknesses"]
+script = ExtResource("7_0npn6")
+metadata/_custom_type_script = "uid://chmwncuf2hdas"
