@@ -3,3 +3,4 @@ extends Node
 
 
 signal card_changed_pile(card: Card, pile: Pile)
+signal enemy_dead(character: Character)

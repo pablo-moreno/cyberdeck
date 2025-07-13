@@ -10,11 +10,13 @@ class_name CardUI extends Panel
 @onready var gold_sprite: Sprite2D = $GoldCard
 
 @onready var title: Label = $TitleLabel
+@onready var energy: Label = $EnergyLabel
 
 
 func _ready() -> void:
     render_card()
     title.text = _card.card_name
+    energy.text = str(_card.energy)
 
 
 func render_card():
@@ -49,11 +51,12 @@ func _attach_signals():
 
 
 func _on_mouse_entered() -> void:
-    print("entra")
     position.y = position.y - hover_up_pixels
     size = size * hover_transform
+    z_index = 100
 
 
 func _on_mouse_exited() -> void:
     position.y = position.y + hover_up_pixels
     size = size / hover_transform
+    z_index = 0

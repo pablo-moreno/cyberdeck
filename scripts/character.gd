@@ -5,9 +5,20 @@ class_name Character extends CharacterBody2D
 @onready var discard_pile: Pile = $Piles/Discard
 @onready var hand: Pile = $Piles/Hand
 @onready var exhaust_pile: Pile = $Piles/Exhaust
+@onready var traits: Node = $Traits
 
 @onready var health: Health = $Health
 @export var cards_to_draw: int = 5
+
+@export var default_max_energy: int = 3
+@export var max_energy: int = 3
+@export var current_energy: int = 3
+
+
+signal ended_player_turn
+signal started_player_turn
+signal current_energy_changed(value: int)
+signal cannot_play_card
 
 
 func _ready() -> void:
@@ -24,7 +35,6 @@ func draw_cards(amount: int = 5):
     
     if len(_cards) == amount:
         draw_pile.move_to(_cards, hand)
-        
         return
     
     discard_pile.move_to(discard_pile.get_all_cards(), draw_pile)
@@ -32,10 +42,55 @@ func draw_cards(amount: int = 5):
     draw_pile.move_to(_cards, hand)
 
 
+func draw_round_cards():
+    draw_cards(cards_to_draw)
+
+
+func discard_all_hand():
+    var cards = hand.get_all_cards()
+    hand.move_to(cards, discard_pile)
+
+
+func discard_card(card: Card):
+    hand.move_to([card], discard_pile)
+
+
 func play_card(card: Card, targets: Array[Character]):
+    if card.energy > current_energy:
+        cannot_play_card.emit()
+        return
+    
     var is_exhaust = card.play(self, targets)
 
     if is_exhaust:
         hand.move_to([card], exhaust_pile)
     else:
         hand.move_to([card], discard_pile)
+    
+    current_energy -= card.energy
+    current_energy_changed.emit(current_energy)
+
+
+func end_turn():
+    ended_player_turn.emit()
+
+
+func start_turn():
+    started_player_turn.emit()
+    apply_effects()
+    draw_round_cards()
+    current_energy = max_energy
+
+
+func apply_effects():
+    var _traits = traits.get_children()
+    
+    for _trait in _traits:
+        if _trait is not Trait:
+            continue
+
+        _trait.apply(self)
+
+
+func set_max_energy(amount):
+    max_energy = amount

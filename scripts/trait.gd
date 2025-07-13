@@ -1,10 +1,14 @@
 class_name Trait
 extends Node
 
+enum TYPE {
+    BATTLE,
+    TURN,
+}
 
 
-func apply_trait():
+@export var type: TYPE = TYPE.TURN
+
+
+func apply(target: Character):
     pass
-    
-    
-    
