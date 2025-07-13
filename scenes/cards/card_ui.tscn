@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://diaq53qbtc6s0"]
+
+[ext_resource type="Script" uid="uid://dsh4ilt66gwtb" path="res://card_ui.gd" id="1_eq0vs"]
+[ext_resource type="Texture2D" uid="uid://c7jx2l0osyn35" path="res://sprites/cards/gold_card.png" id="2_d10lw"]
+[ext_resource type="Texture2D" uid="uid://ca2y2vs8a24xs" path="res://sprites/cards/purple_card.png" id="3_gomaj"]
+[ext_resource type="Texture2D" uid="uid://54joc288tq08" path="res://sprites/cards/base_card.png" id="4_k42ip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d10lw"]
+
+[sub_resource type="SystemFont" id="SystemFont_d10lw"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_gomaj"]
+default_font = SubResource("SystemFont_d10lw")
+
+[node name="CardUI" type="Panel"]
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.143
+anchor_bottom = 0.257
+offset_left = -24.0
+offset_top = -32.0
+offset_right = -67.52
+offset_bottom = -60.52
+pivot_offset = Vector2(48, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_filter = 1
+mouse_default_cursor_shape = 6
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d10lw")
+script = ExtResource("1_eq0vs")
+
+[node name="BaseCard" type="Sprite2D" parent="."]
+position = Vector2(24, 32)
+texture = ExtResource("4_k42ip")
+
+[node name="PurpleCard" type="Sprite2D" parent="."]
+position = Vector2(24, 32)
+texture = ExtResource("3_gomaj")
+
+[node name="GoldCard" type="Sprite2D" parent="."]
+position = Vector2(24, 32)
+texture = ExtResource("2_d10lw")
+
+[node name="DescriptionLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 171.0
+offset_bottom = 104.0
+scale = Vector2(0.25, 0.25)
+theme = SubResource("Theme_gomaj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Hace 6 de daño"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 125.0
+offset_bottom = 38.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_gomaj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "title"
+horizontal_alignment = 1
+
+[node name="HoverRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 52.0
+offset_bottom = 67.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="mouse_entered" from="HoverRect" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HoverRect" to="." method="_on_mouse_exited"]

@@ -1,12 +1,4 @@
-class_name Character extends Node
-
-
-@onready var strength: Attribute = $Skills/Strength
-@onready var intelligence: Attribute = $Skills/Intelligence
-@onready var dexterity: Attribute = $Skills/Dexterity
-@onready var persuasion: Attribute = $Skills/Persuasion
-@onready var wisdom: Attribute = $Skills/Wisdom
-@onready var constitution: Attribute = $Skills/Constitution
+class_name Character extends CharacterBody2D
 
 @onready var deck: Pile = $Piles/Deck
 @onready var draw_pile: Pile = $Piles/Draw
@@ -15,22 +7,29 @@ class_name Character extends Node
 @onready var exhaust_pile: Pile = $Piles/Exhaust
 
 @onready var health: Health = $Health
-@onready var weaknesses_parent: Node = $Weaknesses
+@export var cards_to_draw: int = 5
 
 
 func _ready() -> void:
-    pass
+    move_cards_to_draw()
+        
+
+func move_cards_to_draw():
+    var cards = deck.get_all_cards()
+    deck.move_to(cards, draw_pile, true)
 
 
-func get_weaknesses() -> Array[Weakness]:
-    var weaknesses: Array[Weakness] = []
-    var children = weaknesses_parent.get_children()
-
-    for child in children:
-        if child is Weakness:
-            weaknesses.append(child)
-
-    return weaknesses
+func draw_cards(amount: int = 5):
+    var _cards = draw_pile.get_cards(amount)
+    
+    if len(_cards) == amount:
+        draw_pile.move_to(_cards, hand)
+        
+        return
+    
+    discard_pile.move_to(discard_pile.get_all_cards(), draw_pile)
+    _cards = draw_pile.get_cards(amount)
+    draw_pile.move_to(_cards, hand)
 
 
 func play_card(card: Card, targets: Array[Character]):

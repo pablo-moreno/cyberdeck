@@ -5,5 +5,5 @@ func _ready() -> void:
     pass
 
 
-func apply(card: Card, origin: Character, targets: Array[Character], modifier: int = 0):
+func apply(card: Card, origin: Character, targets: Array[Character]):
     pass

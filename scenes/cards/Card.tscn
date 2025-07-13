@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://uf8n081rxxwe"]
+
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/card.gd" id="1_fa4yn"]
+[ext_resource type="Script" uid="uid://b5vi6tkuxmwiy" path="res://scripts/attack_effect.gd" id="3_7s3sq"]
+
+[node name="Card" type="Node"]
+script = ExtResource("1_fa4yn")
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="AttackEffect" type="Node" parent="Effects"]
+script = ExtResource("3_7s3sq")
+metadata/_custom_type_script = "uid://b5vi6tkuxmwiy"

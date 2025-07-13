@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://8ic7nydh8por"]
+
+[ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/character.gd" id="1_cxrlw"]
+[ext_resource type="Texture2D" uid="uid://r1koqq2d15u" path="res://sprites/characters/metalgirl.png" id="2_qkf0o"]
+[ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/pile.gd" id="3_ppwyf"]
+[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/Card.tscn" id="4_ppwyf"]
+[ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/health.gd" id="5_gjix5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkf0o"]
+radius = 24.0
+height = 52.0
+
+[node name="Metalgirl" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_cxrlw")
+metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qkf0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qkf0o")
+
+[node name="Piles" type="Node" parent="."]
+
+[node name="Deck" type="Node" parent="Piles"]
+script = ExtResource("3_ppwyf")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Card6" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Escala"
+
+[node name="Card5" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Ataque"
+
+[node name="Card4" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Quinta"
+
+[node name="Card3" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Diatónica"
+
+[node name="Card2" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Mixolidio"
+
+[node name="Card" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Lidio"
+
+[node name="Draw" type="Node" parent="Piles"]
+script = ExtResource("3_ppwyf")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Discard" type="Node" parent="Piles"]
+script = ExtResource("3_ppwyf")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Hand" type="Node" parent="Piles"]
+script = ExtResource("3_ppwyf")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Exhaust" type="Node" parent="Piles"]
+script = ExtResource("3_ppwyf")
+metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_gjix5")
+metadata/_custom_type_script = "uid://crfstdtmbnfuv"

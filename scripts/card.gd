@@ -1,43 +1,27 @@
 class_name Card extends Node
 
 
-enum MODIFIERS {
-    STRENGTH,
-    INTELLIGENCE,
-    DEXTERITY,
-    WISDOM, 
-    PERSUASION,
-    CONSTITUTION,
+enum CARD_TYPE {
+    BASE,
+    PURPLE,
+    GOLD,
 }
 
+
 @export var card_name: String = ''
-@export var element: Elements.ELEMENTS
-@export var modifier: MODIFIERS
 @export var is_exhaust: bool = false
 @export_range(0, 9) var energy: int = 3
 
-signal changed_pile(pile: Pile)
+@export var type: CARD_TYPE = CARD_TYPE.BASE
+const SIZE: Vector2 = Vector2(48, 64)
+
+signal drawed
+signal discarded
+signal exhausted
 
 
 func _ready() -> void:
     pass
-
-
-func get_modifier_value(origin: Character) -> int:
-    if modifier == MODIFIERS.STRENGTH:
-        return origin.strength.modifier
-    if modifier == MODIFIERS.INTELLIGENCE:
-        return origin.intelligence.modifier
-    if modifier == MODIFIERS.DEXTERITY:
-        return origin.dexterity.modifier
-    if modifier == MODIFIERS.WISDOM:
-        return origin.wisdom.modifier
-    if modifier == MODIFIERS.PERSUASION:
-        return origin.persuasion.modifier
-    if modifier == MODIFIERS.CONSTITUTION:
-        return origin.constitution.modifier
-    else:
-        return 0
 
 
 func get_effects() -> Array[CardEffect]:
@@ -47,14 +31,16 @@ func get_effects() -> Array[CardEffect]:
     for child in children:
         if child is CardEffect:
             effects.append(child)
-            
+
     return effects
 
 
 func play(origin: Character, targets: Array[Character]) -> bool:
-    var modifier = get_modifier_value(origin)
-
     for effect in get_effects():
         effect.apply(self, origin, targets)
     
     return is_exhaust
+
+
+func get_description():
+    return tr('Ataca')
