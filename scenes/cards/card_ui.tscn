@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://diaq53qbtc6s0"]
 
-[ext_resource type="Script" uid="uid://dsh4ilt66gwtb" path="res://card_ui.gd" id="1_eq0vs"]
+[ext_resource type="Script" uid="uid://dsh4ilt66gwtb" path="res://scripts/card_ui.gd" id="1_eq0vs"]
 [ext_resource type="Texture2D" uid="uid://c7jx2l0osyn35" path="res://sprites/cards/gold_card.png" id="2_d10lw"]
 [ext_resource type="Texture2D" uid="uid://ca2y2vs8a24xs" path="res://sprites/cards/purple_card.png" id="3_gomaj"]
 [ext_resource type="Texture2D" uid="uid://54joc288tq08" path="res://sprites/cards/base_card.png" id="4_k42ip"]
