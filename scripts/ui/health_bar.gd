@@ -32,7 +32,7 @@ func _on_health_changed_current_shield(value: int):
         shield_label.visible = true
         shield_sprite.visible = true
     else:
-        shield_label.visible = true
-        shield_sprite.visible = true
+        shield_label.visible = false
+        shield_sprite.visible = false
         
     shield_label.text = str(value)

@@ -25,6 +25,7 @@ func set_player(player: Character):
 
 
 func play():
+    health.reset_shield()
     _apply_next_action()
     turn_ended.emit(self)
 

@@ -73,6 +73,11 @@ func add_shield(amount: int) -> void:
     changed_current_shield.emit(current_shield)
 
 
+func reset_shield() -> void:
+    current_shield = 0
+    changed_current_shield.emit(0)
+
+
 func increase_max_health(amount: int) -> void:
     """
     Handles maximum health increment
