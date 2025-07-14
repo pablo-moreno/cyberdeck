@@ -96,19 +96,19 @@ theme_override_font_sizes/font_size = 16
 text = "0"
 
 [node name="DrawButton" type="Button" parent="UI"]
-offset_left = 515.0
-offset_top = -118.0
-offset_right = 631.0
-offset_bottom = -87.0
+offset_left = 518.0
+offset_top = -71.0
+offset_right = 634.0
+offset_bottom = -40.0
 theme = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 16
 text = "Robar cartas"
 
 [node name="EndTurnButton" type="Button" parent="UI"]
-offset_left = 515.0
-offset_top = -83.0
-offset_right = 631.0
-offset_bottom = -52.0
+offset_left = 518.0
+offset_top = -36.0
+offset_right = 634.0
+offset_bottom = -5.0
 theme = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 16
 text = "Acabar turno"

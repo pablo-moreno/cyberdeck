@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5i3fykbust0s"]
+
+[ext_resource type="Script" uid="uid://cpqf0hrf0rllp" path="res://scripts/ui/health_bar.gd" id="1_laqga"]
+[ext_resource type="Texture2D" uid="uid://grsp858lla2m" path="res://sprites/icons/shield.png" id="2_6my8s"]
+[ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="3_movrr"]
+
+[sub_resource type="Gradient" id="Gradient_m1d47"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.12549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_laqga"]
+gradient = SubResource("Gradient_m1d47")
+
+[sub_resource type="Gradient" id="Gradient_nuk2n"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.0747294, 0.684503, 0.248648, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y762u"]
+gradient = SubResource("Gradient_nuk2n")
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_right = 256.0
+offset_bottom = 1.0
+scale = Vector2(0.52, 11.88)
+value = 76.0
+texture_under = SubResource("GradientTexture1D_laqga")
+texture_progress = SubResource("GradientTexture1D_y762u")
+script = ExtResource("1_laqga")
+metadata/_custom_type_script = "uid://cpqf0hrf0rllp"
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
+position = Vector2(-31.2038, 0.360991)
+scale = Vector2(4.43867, 0.177272)
+texture = ExtResource("2_6my8s")
+
+[node name="ShieldLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -67.2082
+offset_top = -0.631735
+offset_right = -27.2082
+offset_bottom = 31.3683
+scale = Vector2(1.7568, 0.0751016)
+theme = ExtResource("3_movrr")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

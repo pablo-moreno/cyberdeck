@@ -46,9 +46,11 @@ func _get_next() -> Enemy:
 
     return enemy
 
+
 func reset_enemies():
     current_enemy_index = 0
     _enemies_that_acted = []
+
 
 func _on_started_player_turn():
     pass
@@ -74,6 +76,8 @@ func _on_round_started():
 
 func _on_round_ended():
     player.started_player_turn.emit()
+    for _enemy in enemies:
+        _enemy.round_started.emit()
 
 
 func _on_enemy_dead(enemy: Enemy):

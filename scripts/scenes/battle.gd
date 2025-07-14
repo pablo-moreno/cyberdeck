@@ -27,7 +27,7 @@ func _setup():
         if child is Enemy:
             turn_manager.add_enemy(child)
             child.set_player(player)
-        
+
     turn_manager.init()
 
 

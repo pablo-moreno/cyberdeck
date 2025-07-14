@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bk3nwypv4iwcr" path="res://sprites/characters/punky.png" id="2_md0e3"]
 [ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="3_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://dx1x5o13r5yho" path="res://scenes/enemies/actions/attack_action.tscn" id="4_fcftc"]
-[ext_resource type="PackedScene" uid="uid://bomwrm7lr2fen" path="res://scenes/ui/progress_health_bar.tscn" id="5_lu5c6"]
 [ext_resource type="PackedScene" uid="uid://dy6piolcgrput" path="res://scenes/enemies/actions/shield_action.tscn" id="5_nb6gf"]
+[ext_resource type="PackedScene" uid="uid://b5i3fykbust0s" path="res://scenes/ui/progress_health_bar_gradient.tscn" id="6_nb6gf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
 radius = 39.0
@@ -41,6 +41,12 @@ offset_bottom = -58.0
 offset_top = -57.0
 offset_bottom = -57.0
 
-[node name="ProgressHealthBar" parent="." instance=ExtResource("5_lu5c6")]
-offset_top = 57.0
-offset_bottom = 84.0
+[node name="TextureProgressBar" parent="." instance=ExtResource("6_nb6gf")]
+offset_left = -35.0
+offset_top = 60.0
+offset_right = 221.0
+offset_bottom = 61.0
+scale = Vector2(0.33, 7.54)
+
+[node name="IntentionSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -62)

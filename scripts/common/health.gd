@@ -43,6 +43,7 @@ func take_damage(amount: int) -> void:
         - damaged
         - death
     """
+    print("taking damage %s" % amount)
     var damage_without_shield = max(amount - current_shield, 0)
     current_shield = max(current_shield - amount, 0)
     
@@ -69,6 +70,7 @@ func heal(amount: int) -> void:
 
 func add_shield(amount: int) -> void:
     current_shield += amount
+    changed_current_shield.emit(current_shield)
 
 
 func increase_max_health(amount: int) -> void:

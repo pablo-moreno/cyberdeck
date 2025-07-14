@@ -8,6 +8,8 @@ signal death(enemy: Enemy)
 
 @onready var health: Health = $Health
 @onready var actions: Node = $Actions
+@onready var intention_sprite: Sprite2D = $IntentionSprite
+
 
 var _player: Character = null
 var _current_action_index: int = 0
@@ -23,8 +25,8 @@ func set_player(player: Character):
 
 
 func play():
-    turn_ended.emit(self)
     _apply_next_action()
+    turn_ended.emit(self)
 
 
 func _get_next_action() -> Action:
@@ -54,6 +56,6 @@ func _on_dead():
 
 
 func _on_round_started():
-    print('inicio de ronda %s' % name)
     var _next_action = _get_next_action()
-    _next_action.icon.visible = true
+    intention_sprite.texture = _next_action.texture
+    intention_sprite.texture_changed.emit()

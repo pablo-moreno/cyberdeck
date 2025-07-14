@@ -8,6 +8,8 @@ physics_interpolation_mode = 0
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_nksl6")
+type = 1
+texture = ExtResource("2_nksl6")
 metadata/_custom_type_script = "uid://bc6r60kvwachl"
 
 [node name="Icon" type="Sprite2D" parent="."]
