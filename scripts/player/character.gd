@@ -25,6 +25,11 @@ signal hand_reset
 func _ready() -> void:
     move_cards_to_draw()
     GlobalSignals.discard_card.connect(discard_card)
+    GlobalSignals.exhaust_card.connect(exhaust_card)
+
+
+func _get_cards_to_draw() -> int:
+    return cards_to_draw
 
 
 func move_cards_to_draw():
@@ -37,14 +42,14 @@ func move_cards_to_draw():
 func draw_cards(amount: int = 5):
     var _cards = draw_pile.get_cards(amount)
     var _drawed_cards = len(_cards)
-    
+
     for _card in _cards:
         _card.move_to(hand)
         GlobalSignals.drawn_card.emit(_card)
-    
+
     if _drawed_cards == amount:
         return
-    
+
     for _card in discard_pile.get_all_cards():
         if _card is Card:
             _card.move_to(draw_pile)
@@ -59,7 +64,7 @@ func draw_cards(amount: int = 5):
 
 
 func draw_round_cards():
-    draw_cards(cards_to_draw)
+    draw_cards(_get_cards_to_draw())
 
 
 func discard_all_hand():
@@ -73,17 +78,23 @@ func discard_card(card: Card):
     card.move_to(discard_pile)
 
 
+func exhaust_card(card: Card):
+    card.move_to(exhaust_pile)
+
+
 func play_card(card: Card, targets: Array[Character]):
     if card.energy > current_energy:
         cannot_play_card.emit()
         return
     
     var is_exhaust = card.play(self, targets)
+    current_energy -= card.energy
+    current_energy_changed.emit(current_energy)
 
     if is_exhaust:
-        card.move_to(exhaust_pile)
+        GlobalSignals.exhaust_card.emit(card)
     else:
-        card.move_to(discard_pile)
+        GlobalSignals.discard_card.emit(card)
     
     current_energy -= card.energy
     current_energy_changed.emit(current_energy)

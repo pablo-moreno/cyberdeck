@@ -1,17 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://diaq53qbtc6s0"]
+[gd_scene load_steps=7 format=3 uid="uid://diaq53qbtc6s0"]
 
 [ext_resource type="Script" uid="uid://dsh4ilt66gwtb" path="res://scripts/ui/card_ui.gd" id="1_eq0vs"]
 [ext_resource type="Texture2D" uid="uid://c7jx2l0osyn35" path="res://sprites/cards/gold_card.png" id="2_d10lw"]
 [ext_resource type="Texture2D" uid="uid://ca2y2vs8a24xs" path="res://sprites/cards/purple_card.png" id="3_gomaj"]
 [ext_resource type="Texture2D" uid="uid://54joc288tq08" path="res://sprites/cards/base_card.png" id="4_k42ip"]
+[ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="5_gomaj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d10lw"]
-
-[sub_resource type="SystemFont" id="SystemFont_d10lw"]
-subpixel_positioning = 0
-
-[sub_resource type="Theme" id="Theme_gomaj"]
-default_font = SubResource("SystemFont_d10lw")
 
 [node name="CardUI" type="Panel"]
 texture_filter = 1
@@ -51,25 +46,23 @@ offset_top = 40.0
 offset_right = 171.0
 offset_bottom = 104.0
 scale = Vector2(0.25, 0.25)
-theme = SubResource("Theme_gomaj")
+theme = ExtResource("5_gomaj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Hace 6 de daño"
 horizontal_alignment = 1
 
 [node name="EnergyLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 49.0
-offset_bottom = 49.0
+offset_top = 3.0
+offset_right = 56.0
+offset_bottom = 43.0
 scale = Vector2(0.25, 0.25)
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_gomaj")
+theme = ExtResource("5_gomaj")
 theme_override_colors/font_color = Color(0.925353, 0.925353, 0.925353, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -77,18 +70,19 @@ vertical_alignment = 1
 [node name="TitleLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 9.0
-offset_top = 4.0
-offset_right = 125.0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 171.0
 offset_bottom = 38.0
 scale = Vector2(0.25, 0.25)
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_gomaj")
+theme = ExtResource("5_gomaj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "title"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HoverRect" type="ColorRect" parent="."]
 layout_mode = 0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://nxejjx6lux6y"]
+[gd_scene load_steps=7 format=3 uid="uid://nxejjx6lux6y"]
 
 [ext_resource type="Texture2D" uid="uid://vmu6jsjd5oew" path="res://sprites/backgrounds/street.png" id="1_dn72j"]
 [ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/scenes/battle.gd" id="1_lpir7"]
 [ext_resource type="Script" uid="uid://b56rnmt62xd1s" path="res://scripts/combat/turn_manager.gd" id="2_th188"]
 [ext_resource type="PackedScene" uid="uid://8ic7nydh8por" path="res://scenes/characters/metalgirl.tscn" id="3_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://csikcb3fhm55e" path="res://scenes/cards/hand.tscn" id="4_a12nh"]
+[ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="6_6vh42"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_lpir7")
@@ -35,17 +36,19 @@ offset_bottom = -1.0
 scale = Vector2(1.16, 1)
 
 [node name="DrawButton" type="Button" parent="."]
-offset_left = 483.0
-offset_top = -117.0
-offset_right = 625.0
-offset_bottom = -86.0
+offset_left = 515.0
+offset_top = -118.0
+offset_right = 631.0
+offset_bottom = -87.0
+theme = ExtResource("6_6vh42")
 text = "Robar cartas"
 
 [node name="EndTurnButton" type="Button" parent="."]
-offset_left = 483.0
+offset_left = 515.0
 offset_top = -80.0
-offset_right = 625.0
+offset_right = 631.0
 offset_bottom = -49.0
+theme = ExtResource("6_6vh42")
 text = "Acabar turno"
 
 [node name="Label" type="Label" parent="."]
@@ -53,13 +56,15 @@ offset_left = 16.0
 offset_top = -342.0
 offset_right = 95.0
 offset_bottom = -319.0
-text = "DESCARTE"
+theme = ExtResource("6_6vh42")
+text = "Descarte"
 
 [node name="DiscardCounter" type="Label" parent="."]
 offset_left = 106.0
 offset_top = -342.0
 offset_right = 146.0
 offset_bottom = -319.0
+theme = ExtResource("6_6vh42")
 text = "0"
 
 [node name="Label2" type="Label" parent="."]
@@ -67,13 +72,15 @@ offset_left = 16.0
 offset_top = -318.0
 offset_right = 95.0
 offset_bottom = -295.0
-text = "ROBO"
+theme = ExtResource("6_6vh42")
+text = "Robo"
 
 [node name="DrawCounter" type="Label" parent="."]
 offset_left = 106.0
 offset_top = -319.0
 offset_right = 146.0
 offset_bottom = -296.0
+theme = ExtResource("6_6vh42")
 text = "0"
 
 [node name="Label3" type="Label" parent="."]
@@ -81,13 +88,15 @@ offset_left = 16.0
 offset_top = -295.0
 offset_right = 56.0
 offset_bottom = -272.0
-text = "MANO"
+theme = ExtResource("6_6vh42")
+text = "Mano"
 
 [node name="HandCounter" type="Label" parent="."]
 offset_left = 106.0
 offset_top = -295.0
 offset_right = 146.0
 offset_bottom = -272.0
+theme = ExtResource("6_6vh42")
 text = "0"
 
 [connection signal="ended_player_turn" from="Player" to="." method="_on_player_ended_player_turn"]
