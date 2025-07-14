@@ -7,7 +7,6 @@ enum CARD_TYPE {
     GOLD,
 }
 
-
 @export var card_name: String = ''
 @export var is_exhaust: bool = false
 @export_range(0, 9) var energy: int = 3
@@ -40,6 +39,11 @@ func play(origin: Character, targets: Array[Character]) -> bool:
         effect.apply(self, origin, targets)
     
     return is_exhaust
+
+
+func move_to(target: Pile):
+    reparent(target)        
+    GlobalSignals.card_changed_pile.emit(self, target)
 
 
 func get_description():

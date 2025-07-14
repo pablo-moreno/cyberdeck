@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://nxejjx6lux6y"]
 
 [ext_resource type="Texture2D" uid="uid://vmu6jsjd5oew" path="res://sprites/backgrounds/street.png" id="1_dn72j"]
-[ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/battle.gd" id="1_lpir7"]
-[ext_resource type="Script" uid="uid://b56rnmt62xd1s" path="res://scripts/turn_manager.gd" id="2_th188"]
+[ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/scenes/battle.gd" id="1_lpir7"]
+[ext_resource type="Script" uid="uid://b56rnmt62xd1s" path="res://scripts/combat/turn_manager.gd" id="2_th188"]
 [ext_resource type="PackedScene" uid="uid://8ic7nydh8por" path="res://scenes/characters/metalgirl.tscn" id="3_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://csikcb3fhm55e" path="res://scenes/cards/hand.tscn" id="4_a12nh"]
 
@@ -49,30 +49,46 @@ offset_bottom = -49.0
 text = "Acabar turno"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 7.0
-offset_top = -69.0
-offset_right = 86.0
-offset_bottom = -46.0
+offset_left = 16.0
+offset_top = -342.0
+offset_right = 95.0
+offset_bottom = -319.0
 text = "DESCARTE"
 
 [node name="DiscardCounter" type="Label" parent="."]
-offset_left = 91.0
-offset_top = -68.0
-offset_right = 131.0
-offset_bottom = -45.0
+offset_left = 106.0
+offset_top = -342.0
+offset_right = 146.0
+offset_bottom = -319.0
+text = "0"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 7.0
-offset_top = -39.0
-offset_right = 86.0
-offset_bottom = -16.0
+offset_left = 16.0
+offset_top = -318.0
+offset_right = 95.0
+offset_bottom = -295.0
 text = "ROBO"
 
 [node name="DrawCounter" type="Label" parent="."]
-offset_left = 91.0
-offset_top = -39.0
-offset_right = 131.0
-offset_bottom = -16.0
+offset_left = 106.0
+offset_top = -319.0
+offset_right = 146.0
+offset_bottom = -296.0
+text = "0"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 16.0
+offset_top = -295.0
+offset_right = 56.0
+offset_bottom = -272.0
+text = "MANO"
+
+[node name="HandCounter" type="Label" parent="."]
+offset_left = 106.0
+offset_top = -295.0
+offset_right = 146.0
+offset_bottom = -272.0
+text = "0"
 
 [connection signal="ended_player_turn" from="Player" to="." method="_on_player_ended_player_turn"]
 [connection signal="no_enemies_left" from="TurnManager" to="." method="_on_no_enemies_left"]

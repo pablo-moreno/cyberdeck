@@ -29,23 +29,33 @@ func _ready() -> void:
 
 func move_cards_to_draw():
     var cards = deck.get_all_cards()
-    deck.move_to(cards, draw_pile)
+    
+    for card in cards:
+        card.move_to(draw_pile)
 
 
 func draw_cards(amount: int = 5):
     var _cards = draw_pile.get_cards(amount)
+    var _drawed_cards = len(_cards)
     
     for _card in _cards:
+        _card.move_to(hand)
         GlobalSignals.drawn_card.emit(_card)
     
-    if len(_cards) == amount:
-        draw_pile.move_to(_cards, hand)
+    if _drawed_cards == amount:
         return
     
+    for _card in discard_pile.get_all_cards():
+        if _card is Card:
+            _card.move_to(draw_pile)
+
     hand_reset.emit()
-    discard_pile.move_to(discard_pile.get_all_cards(), draw_pile)
-    _cards = draw_pile.get_cards(amount)
-    draw_pile.move_to(_cards, hand)
+    
+    _cards = draw_pile.get_cards(amount - _drawed_cards)
+    for _card in _cards:
+        if _card is Card:
+            _card.move_to(hand)
+            GlobalSignals.drawn_card.emit(_card)
 
 
 func draw_round_cards():
@@ -54,12 +64,13 @@ func draw_round_cards():
 
 func discard_all_hand():
     var cards = hand.get_all_cards()
+
     for card in cards:
-        discard_card(card)
+        GlobalSignals.discard_card.emit(card)
 
 
 func discard_card(card: Card):
-    hand.move_to([card], discard_pile)
+    card.move_to(discard_pile)
 
 
 func play_card(card: Card, targets: Array[Character]):
@@ -70,9 +81,9 @@ func play_card(card: Card, targets: Array[Character]):
     var is_exhaust = card.play(self, targets)
 
     if is_exhaust:
-        hand.move_to([card], exhaust_pile)
+        card.move_to(exhaust_pile)
     else:
-        hand.move_to([card], discard_pile)
+        card.move_to(discard_pile)
     
     current_energy -= card.energy
     current_energy_changed.emit(current_energy)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://8ic7nydh8por"]
 
-[ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/character.gd" id="1_cxrlw"]
+[ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://r1koqq2d15u" path="res://sprites/characters/metalgirl.png" id="2_qkf0o"]
-[ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/pile.gd" id="3_ppwyf"]
-[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/Card.tscn" id="4_ppwyf"]
-[ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/health.gd" id="5_gjix5"]
-[ext_resource type="Script" uid="uid://b1oja3s2i1c3s" path="res://scripts/extra_draw_trait.gd" id="6_r71r1"]
-[ext_resource type="Script" uid="uid://c2x2a1fr37er3" path="res://scripts/extra_energy_trait.gd" id="7_copgy"]
+[ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/cards/pile.gd" id="3_ppwyf"]
+[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/card.tscn" id="4_ppwyf"]
+[ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="5_gjix5"]
+[ext_resource type="Script" uid="uid://b1oja3s2i1c3s" path="res://scripts/traits/extra_draw_trait.gd" id="6_r71r1"]
+[ext_resource type="Script" uid="uid://c2x2a1fr37er3" path="res://scripts/traits/extra_energy_trait.gd" id="7_copgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkf0o"]
 radius = 24.0
