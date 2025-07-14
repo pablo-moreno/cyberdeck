@@ -54,6 +54,6 @@ func _on_dead():
 
 
 func _on_round_started():
-    print('inicio de ronda')
+    print('inicio de ronda %s' % name)
     var _next_action = _get_next_action()
     _next_action.icon.visible = true

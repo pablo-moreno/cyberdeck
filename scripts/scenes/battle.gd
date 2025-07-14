@@ -65,7 +65,7 @@ func _on_player_ended_player_turn() -> void:
 
 
 func _on_end_turn_pressed() -> void:
-    player.ended_player_turn.emit()
+    turn_manager.player_turn_ended.emit()
 
 
 func _on_card_discarded(_card: Card):

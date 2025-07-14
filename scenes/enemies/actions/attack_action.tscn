@@ -1,13 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx1x5o13r5yho"]
 
 [ext_resource type="Script" uid="uid://c8pawektchcb6" path="res://scripts/enemies/actions/attack.gd" id="1_37dht"]
-[ext_resource type="Texture2D" uid="uid://54joc288tq08" path="res://sprites/cards/base_card.png" id="2_dilif"]
+[ext_resource type="Texture2D" uid="uid://bkl2s5cdlurwv" path="res://sprites/icons/damage.png" id="2_dilif"]
 
-[node name="AttackAction" type="Node"]
+[node name="AttackAction" type="Control"]
+physics_interpolation_mode = 0
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_37dht")
 metadata/_custom_type_script = "uid://c8pawektchcb6"
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, -57)
-scale = Vector2(0.145833, 0.145833)
+visible = false
+scale = Vector2(2, 2)
 texture = ExtResource("2_dilif")

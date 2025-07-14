@@ -1,4 +1,4 @@
-class_name Action extends Node
+class_name Action extends Control
 
 
 enum TYPE {

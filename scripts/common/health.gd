@@ -7,6 +7,7 @@ class_name Health extends Node
 
 @export var health = 100
 @export var current_max_health = 100
+@export var current_shield = 0
 
 # Signals
 
@@ -15,6 +16,9 @@ signal death
 
 ## Emitted when health is changed
 signal change_health(new_health: int)
+
+## Emitted when shield is changed
+signal changed_current_shield(new_shield: int)
 
 ## Emitted when max health is changed
 signal change_max_health(new_max_health: int)
@@ -39,7 +43,10 @@ func take_damage(amount: int) -> void:
         - damaged
         - death
     """
-    health = max(health - amount, 0)
+    var damage_without_shield = max(amount - current_shield, 0)
+    current_shield = max(current_shield - amount, 0)
+    
+    health = max(health - damage_without_shield, 0)
     change_health.emit(health)
     damaged.emit(amount)
 
@@ -58,6 +65,10 @@ func heal(amount: int) -> void:
     health = min(health + amount, current_max_health)
     change_health.emit(health)
     healed.emit()
+
+
+func add_shield(amount: int) -> void:
+    current_shield += amount
 
 
 func increase_max_health(amount: int) -> void:

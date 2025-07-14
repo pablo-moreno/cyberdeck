@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba22dkscl62q5"]
+[gd_scene load_steps=8 format=3 uid="uid://ba22dkscl62q5"]
 
 [ext_resource type="Script" uid="uid://byjr4llf3v7rs" path="res://scripts/enemies/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://bk3nwypv4iwcr" path="res://sprites/characters/punky.png" id="2_md0e3"]
 [ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="3_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://dx1x5o13r5yho" path="res://scenes/enemies/actions/attack_action.tscn" id="4_fcftc"]
+[ext_resource type="PackedScene" uid="uid://bomwrm7lr2fen" path="res://scenes/ui/progress_health_bar.tscn" id="5_lu5c6"]
+[ext_resource type="PackedScene" uid="uid://dy6piolcgrput" path="res://scenes/enemies/actions/shield_action.tscn" id="5_nb6gf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
 radius = 39.0
@@ -27,6 +29,18 @@ health = 32
 current_max_health = 32
 metadata/_custom_type_script = "uid://crfstdtmbnfuv"
 
-[node name="Actions" type="Node" parent="."]
+[node name="Actions" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="AttackAction" parent="Actions" instance=ExtResource("4_fcftc")]
+offset_top = -58.0
+offset_bottom = -58.0
+
+[node name="ShieldAction" parent="Actions" instance=ExtResource("5_nb6gf")]
+offset_top = -57.0
+offset_bottom = -57.0
+
+[node name="ProgressHealthBar" parent="." instance=ExtResource("5_lu5c6")]
+offset_top = 57.0
+offset_bottom = 84.0

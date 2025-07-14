@@ -1,8 +1,8 @@
 class_name TurnManager
 extends Node
 
-signal turn_ended(character: Character)
-signal turn_start(character: Character)
+signal player_turn_ended
+signal turn_start
 signal no_enemies_left
 signal round_started
 signal round_ended
@@ -55,11 +55,7 @@ func _on_started_player_turn():
 
 
 func _on_ended_player_turn():
-    reset_enemies()
-    var next_enemy = _get_next()
-    
-    if next_enemy != null:
-        next_enemy.turn_started.emit()
+    pass
 
 
 func _on_ended_enemy_turn(enemy: Enemy):
@@ -84,3 +80,12 @@ func _on_enemy_dead(enemy: Enemy):
     var enemy_index = enemies.find(enemy)
     enemies.remove_at(enemy_index)
     enemy.queue_free()
+
+
+func _on_player_turn_ended() -> void:
+    player.ended_player_turn.emit()
+    reset_enemies()
+    var next_enemy = _get_next()
+    
+    if next_enemy != null:
+        next_enemy.turn_started.emit()

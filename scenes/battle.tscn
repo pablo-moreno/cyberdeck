@@ -22,7 +22,7 @@ anchor_mode = 0
 editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("3_p1qf1")]
-position = Vector2(106, -118)
+position = Vector2(159, -151)
 
 [node name="TurnManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_th188")
@@ -116,13 +116,16 @@ text = "Acabar turno"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Punky1" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(432, -127)
+position = Vector2(505, -159)
+
+[node name="Punky2" parent="Enemies" instance=ExtResource("4_4k1nj")]
+position = Vector2(396, -174)
 
 [connection signal="ended_player_turn" from="Player" to="." method="_on_player_ended_player_turn"]
 [connection signal="no_enemies_left" from="TurnManager" to="." method="_on_no_enemies_left"]
+[connection signal="player_turn_ended" from="TurnManager" to="TurnManager" method="_on_player_turn_ended"]
 [connection signal="round_ended" from="TurnManager" to="." method="_on_round_ended"]
 [connection signal="round_started" from="TurnManager" to="." method="_on_round_started"]
-[connection signal="turn_ended" from="TurnManager" to="." method="_on_turn_manager_turn_ended"]
 [connection signal="turn_start" from="TurnManager" to="." method="_on_turn_manager_turn_start"]
 [connection signal="pressed" from="UI/DrawButton" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="UI/EndTurnButton" to="." method="_on_end_turn_pressed"]

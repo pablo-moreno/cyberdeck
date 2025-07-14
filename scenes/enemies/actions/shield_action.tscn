@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy6piolcgrput"]
+
+[ext_resource type="Script" uid="uid://bc6r60kvwachl" path="res://scripts/enemies/actions/shield.gd" id="1_nksl6"]
+[ext_resource type="Texture2D" uid="uid://grsp858lla2m" path="res://sprites/icons/shield.png" id="2_nksl6"]
+
+[node name="ShieldAction" type="Control"]
+physics_interpolation_mode = 0
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nksl6")
+metadata/_custom_type_script = "uid://bc6r60kvwachl"
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_nksl6")
