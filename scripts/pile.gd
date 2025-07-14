@@ -12,24 +12,19 @@ func _ready() -> void:
             _cards.append(card)
 
 
-func move_to(cards: Array[Card], target: Pile, copy: bool = false):
-    target.add_cards(cards)
-    
-    for card in cards:
-        if not copy:
-            var index: int = _cards.find(card)
-            _cards.remove_at(index)
+func move_to(cards: Array[Node], target: Pile):
+    for node in cards:
+        if node is not Card:
+            continue
         
-        GlobalSignals.card_changed_pile.emit(card, target)
-
-func add_cards(cards: Array[Card]):
-    cards.shuffle()
-    _cards.append_array(cards)
+        node.reparent(target)        
+        GlobalSignals.card_changed_pile.emit(node, target)
 
 
-func get_cards(amount: int = 1) -> Array[Card]:
-    return _cards.slice(0, amount)
+func get_cards(amount: int = 1) -> Array[Node]:
+    var _card_nodes = get_children()
+    return _card_nodes.slice(0, amount)
 
 
-func get_all_cards() -> Array[Card]:
-    return _cards
+func get_all_cards() -> Array[Node]:
+    return get_children()

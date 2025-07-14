@@ -19,6 +19,24 @@ func _ready() -> void:
     energy.text = str(_card.energy)
 
 
+func set_card(card: Card):
+    _card = card
+    _attach_signals()
+
+
+func remove_card(card: Card):
+    if card != _card:
+        return
+
+    _card = null
+    GlobalSignals.remove_from_hand.emit(self)
+
+
+func _attach_signals():
+    GlobalSignals.discard_card.connect(remove_card)
+    GlobalSignals.exhaust_card.connect(remove_card)
+
+
 func render_card():
     if not _card:
         return
@@ -37,19 +55,6 @@ func render_card():
         gold_sprite.visible = true
 
 
-func set_card(card: Card):
-    _card = card
-    _attach_signals()
-
-func remove_card(card: Card):
-    _card = null
-
-
-func _attach_signals():
-    _card.discarded.connect(remove_card)
-    _card.exhausted.connect(remove_card)
-
-
 func _on_mouse_entered() -> void:
     position.y = position.y - hover_up_pixels
     size = size * hover_transform
@@ -60,3 +65,8 @@ func _on_mouse_exited() -> void:
     position.y = position.y + hover_up_pixels
     size = size / hover_transform
     z_index = 0
+
+
+func _on_hover_rect_gui_input(event: InputEvent) -> void:
+    if event.is_pressed():
+        GlobalSignals.discard_card.emit(_card)

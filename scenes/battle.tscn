@@ -48,6 +48,32 @@ offset_right = 625.0
 offset_bottom = -49.0
 text = "Acabar turno"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = -69.0
+offset_right = 86.0
+offset_bottom = -46.0
+text = "DESCARTE"
+
+[node name="DiscardCounter" type="Label" parent="."]
+offset_left = 91.0
+offset_top = -68.0
+offset_right = 131.0
+offset_bottom = -45.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 7.0
+offset_top = -39.0
+offset_right = 86.0
+offset_bottom = -16.0
+text = "ROBO"
+
+[node name="DrawCounter" type="Label" parent="."]
+offset_left = 91.0
+offset_top = -39.0
+offset_right = 131.0
+offset_bottom = -16.0
+
 [connection signal="ended_player_turn" from="Player" to="." method="_on_player_ended_player_turn"]
 [connection signal="no_enemies_left" from="TurnManager" to="." method="_on_no_enemies_left"]
 [connection signal="round_ended" from="TurnManager" to="." method="_on_round_ended"]

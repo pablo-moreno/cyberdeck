@@ -15,13 +15,13 @@ enum CARD_TYPE {
 @export var type: CARD_TYPE = CARD_TYPE.BASE
 const SIZE: Vector2 = Vector2(48, 64)
 
-signal drawed
-signal discarded
-signal exhausted
-
 
 func _ready() -> void:
     pass
+
+
+func discard():
+    GlobalSignals.discard_card.emit(self)
 
 
 func get_effects() -> Array[CardEffect]:

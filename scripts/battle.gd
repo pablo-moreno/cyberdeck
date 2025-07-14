@@ -5,22 +5,14 @@ extends Node2D
 @onready var hand: Hand = $Hand
 @onready var turn_manager: TurnManager = $TurnManager
 
+@onready var discard_counter := $DiscardCounter
+@onready var draw_counter := $DrawCounter
 
 const CARD_UI = preload("res://scenes/cards/card_ui.tscn")
 
 
 func _ready() -> void:
-    GlobalSignals.card_changed_pile.connect(_on_card_changed_pile)
     turn_manager.init()
-
-
-func _on_card_changed_pile(card: Card, pile: Pile):
-    if pile != player.hand:
-        return
-
-    var card_ui = CARD_UI.instantiate()
-    card_ui.set_card(card)
-    hand.draw(card_ui)
 
 
 func _on_draw_button_pressed() -> void:

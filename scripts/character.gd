@@ -19,24 +19,30 @@ signal ended_player_turn
 signal started_player_turn
 signal current_energy_changed(value: int)
 signal cannot_play_card
+signal hand_reset
 
 
 func _ready() -> void:
     move_cards_to_draw()
-        
+    GlobalSignals.discard_card.connect(discard_card)
+
 
 func move_cards_to_draw():
     var cards = deck.get_all_cards()
-    deck.move_to(cards, draw_pile, true)
+    deck.move_to(cards, draw_pile)
 
 
 func draw_cards(amount: int = 5):
     var _cards = draw_pile.get_cards(amount)
     
+    for _card in _cards:
+        GlobalSignals.drawn_card.emit(_card)
+    
     if len(_cards) == amount:
         draw_pile.move_to(_cards, hand)
         return
     
+    hand_reset.emit()
     discard_pile.move_to(discard_pile.get_all_cards(), draw_pile)
     _cards = draw_pile.get_cards(amount)
     draw_pile.move_to(_cards, hand)
@@ -48,7 +54,8 @@ func draw_round_cards():
 
 func discard_all_hand():
     var cards = hand.get_all_cards()
-    hand.move_to(cards, discard_pile)
+    for card in cards:
+        discard_card(card)
 
 
 func discard_card(card: Card):
