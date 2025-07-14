@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba22dkscl62q5"]
+
+[ext_resource type="Script" uid="uid://byjr4llf3v7rs" path="res://scripts/enemies/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://bk3nwypv4iwcr" path="res://sprites/characters/punky.png" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="3_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://dx1x5o13r5yho" path="res://scenes/enemies/actions/attack_action.tscn" id="4_fcftc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
+radius = 39.0
+height = 108.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_7p1mj")
+metadata/_custom_type_script = "uid://byjr4llf3v7rs"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_md0e3")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4ra3w")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_4ra3w")
+health = 32
+current_max_health = 32
+metadata/_custom_type_script = "uid://crfstdtmbnfuv"
+
+[node name="Actions" type="Node" parent="."]
+
+[node name="AttackAction" parent="Actions" instance=ExtResource("4_fcftc")]

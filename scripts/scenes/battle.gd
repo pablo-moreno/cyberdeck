@@ -5,21 +5,30 @@ extends Node2D
 @onready var hand: Hand = $Hand
 @onready var turn_manager: TurnManager = $TurnManager
 
-@onready var discard_counter := $DiscardCounter
-@onready var draw_counter := $DrawCounter
-@onready var hand_counter := $HandCounter
+@onready var discard_counter := $UI/DiscardCounter
+@onready var draw_counter := $UI/DrawCounter
+@onready var hand_counter := $UI/HandCounter
 
-const CARD_UI = preload("res://scenes/cards/card_ui.tscn")
+@onready var enemies_parent: Node = $Enemies
+
+const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
 
 func _ready() -> void:
-    turn_manager.init()
+    _setup()
     GlobalSignals.discard_card.connect(_on_card_discarded)
     GlobalSignals.drawn_card.connect(_on_drawn_card)
     draw_counter.text = str(player.draw_pile.get_child_count())
     discard_counter.text = str(player.discard_pile.get_child_count())
-    
-    
+
+
+func _setup():
+    for child in enemies_parent.get_children():
+        if child is Enemy:
+            turn_manager.add_enemy(child)
+            child.set_player(player)
+        
+    turn_manager.init()
 
 
 func _on_draw_button_pressed() -> void:
@@ -47,7 +56,8 @@ func _on_turn_manager_turn_ended(character: Character) -> void:
 
 
 func _on_turn_manager_turn_start(character: Character) -> void:
-    pass # Replace with function body.
+    print("ME TOCAAAAA")
+    player.start_turn()
 
 
 func _on_player_ended_player_turn() -> void:

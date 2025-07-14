@@ -26,6 +26,7 @@ func _ready() -> void:
     move_cards_to_draw()
     GlobalSignals.discard_card.connect(discard_card)
     GlobalSignals.exhaust_card.connect(exhaust_card)
+    started_player_turn.connect(start_turn)
 
 
 func _get_cards_to_draw() -> int:
@@ -55,7 +56,7 @@ func draw_cards(amount: int = 5):
             _card.move_to(draw_pile)
 
     hand_reset.emit()
-    
+
     _cards = draw_pile.get_cards(amount - _drawed_cards)
     for _card in _cards:
         if _card is Card:
@@ -105,7 +106,7 @@ func end_turn():
 
 
 func start_turn():
-    started_player_turn.emit()
+    print("turno de %s" % name)
     apply_effects()
     draw_round_cards()
     current_energy = max_energy

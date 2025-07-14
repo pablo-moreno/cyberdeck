@@ -9,7 +9,7 @@ class_name Hand extends ColorRect
 @export var y_max := -5
 
 @export var hand_pile: Pile = null
-const CARD_UI = preload("res://scenes/cards/card_ui.tscn")
+const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
 
 func _ready() -> void:

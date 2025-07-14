@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://diaq53qbtc6s0"]
 
-[ext_resource type="Script" uid="uid://dsh4ilt66gwtb" path="res://scripts/ui/card_ui.gd" id="1_eq0vs"]
-[ext_resource type="Texture2D" uid="uid://c7jx2l0osyn35" path="res://sprites/cards/gold_card.png" id="2_d10lw"]
-[ext_resource type="Texture2D" uid="uid://ca2y2vs8a24xs" path="res://sprites/cards/purple_card.png" id="3_gomaj"]
-[ext_resource type="Texture2D" uid="uid://54joc288tq08" path="res://sprites/cards/base_card.png" id="4_k42ip"]
-[ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="5_gomaj"]
+[ext_resource type="Script" uid="uid://dsh4ilt66gwtb" path="res://scripts/ui/card_ui.gd" id="1_5rjcn"]
+[ext_resource type="Texture2D" uid="uid://54joc288tq08" path="res://sprites/cards/base_card.png" id="2_fke5x"]
+[ext_resource type="Texture2D" uid="uid://ca2y2vs8a24xs" path="res://sprites/cards/purple_card.png" id="3_vk10k"]
+[ext_resource type="Texture2D" uid="uid://c7jx2l0osyn35" path="res://sprites/cards/gold_card.png" id="4_im7p3"]
+[ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="5_7cyci"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d10lw"]
 
@@ -24,43 +24,46 @@ focus_mode = 1
 mouse_filter = 1
 mouse_default_cursor_shape = 6
 theme_override_styles/panel = SubResource("StyleBoxEmpty_d10lw")
-script = ExtResource("1_eq0vs")
+script = ExtResource("1_5rjcn")
 
 [node name="BaseCard" type="Sprite2D" parent="."]
 position = Vector2(24, 32)
-texture = ExtResource("4_k42ip")
+texture = ExtResource("2_fke5x")
 
 [node name="PurpleCard" type="Sprite2D" parent="."]
 position = Vector2(24, 32)
-texture = ExtResource("3_gomaj")
+texture = ExtResource("3_vk10k")
 
 [node name="GoldCard" type="Sprite2D" parent="."]
 position = Vector2(24, 32)
-texture = ExtResource("2_d10lw")
+texture = ExtResource("4_im7p3")
 
 [node name="DescriptionLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 40.0
-offset_right = 171.0
-offset_bottom = 104.0
-scale = Vector2(0.25, 0.25)
-theme = ExtResource("5_gomaj")
+offset_top = 38.0
+offset_right = 108.0
+offset_bottom = 88.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("5_7cyci")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "Hace 6 de daño"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EnergyLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_top = 3.0
-offset_right = 56.0
-offset_bottom = 43.0
-scale = Vector2(0.25, 0.25)
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 55.0
+offset_bottom = 41.0
+scale = Vector2(0.287795, 0.277202)
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme = ExtResource("5_gomaj")
+theme = ExtResource("5_7cyci")
 theme_override_colors/font_color = Color(0.925353, 0.925353, 0.925353, 1)
 theme_override_font_sizes/font_size = 32
 text = "0"
@@ -70,14 +73,14 @@ vertical_alignment = 1
 [node name="TitleLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 3.0
+offset_left = 11.0
 offset_top = 6.0
-offset_right = 171.0
+offset_right = 127.0
 offset_bottom = 38.0
 scale = Vector2(0.25, 0.25)
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme = ExtResource("5_gomaj")
+theme = ExtResource("5_7cyci")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "title"
