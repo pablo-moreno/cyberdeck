@@ -12,13 +12,16 @@ class_name CardUI extends Draggable
 @onready var gold_sprite: Sprite2D = $UI/GoldCard
 
 @onready var title: Label = $UI/TitleLabel
+@onready var description: Label = $UI/DescriptionLabel
 @onready var energy: Label = $UI/EnergyLabel
 
 
 func _ready() -> void:
     render_card()
     title.text = _card.card_name
+    description.text = _card.get_description()
     energy.text = str(_card.energy)
+    dragging.connect(_on_dragging)
 
 
 func set_card(card: Card):
@@ -73,7 +76,5 @@ func _on_hover_rect_gui_input(event: InputEvent) -> void:
     pass
 
 
-func _get_drag_data(at_position: Vector2) -> Variant:
-    var prev = duplicate()
-    set_drag_preview(prev)
-    return _card
+func _edit_preview_node(node: Draggable):
+    node.z_index = 100

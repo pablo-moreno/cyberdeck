@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nxejjx6lux6y"]
+[gd_scene load_steps=13 format=3 uid="uid://nxejjx6lux6y"]
 
 [ext_resource type="Texture2D" uid="uid://vmu6jsjd5oew" path="res://sprites/backgrounds/street.png" id="1_dn72j"]
 [ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/scenes/battle.gd" id="1_lpir7"]
@@ -7,6 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://ba22dkscl62q5" path="res://scenes/enemies/enemy.tscn" id="4_4k1nj"]
 [ext_resource type="PackedScene" uid="uid://csikcb3fhm55e" path="res://scenes/cards/hand.tscn" id="4_a12nh"]
 [ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="6_6vh42"]
+[ext_resource type="PackedScene" uid="uid://cpl84ooivp67x" path="res://scenes/ui/energy_ui.tscn" id="7_f4pi3"]
+[ext_resource type="Texture2D" uid="uid://3myqdacml1us" path="res://sprites/icons/deck.png" id="8_66ngm"]
+[ext_resource type="Texture2D" uid="uid://cpgoi3e6xint2" path="res://textures/circle_texture.tres" id="9_03edq"]
+[ext_resource type="Script" uid="uid://bhvkutujnevhv" path="res://scripts/ui/victory.gd" id="9_yahae"]
+
+[sub_resource type="Curve" id="Curve_yahae"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.00425529), 0.0, 0.0, 0, 0, Vector2(1, 0.00425529), -0.0485447, 0.0, 0, 0]
+point_count = 2
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_lpir7")
@@ -22,7 +31,7 @@ anchor_mode = 0
 editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("3_p1qf1")]
-position = Vector2(159, -151)
+position = Vector2(133, -171)
 
 [node name="TurnManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_th188")
@@ -35,93 +44,158 @@ offset_top = -77.0
 offset_right = 497.0
 offset_bottom = -5.0
 scale = Vector2(1.04, 1)
+rotation_curve = SubResource("Curve_yahae")
+y_max = 0
 
 [node name="UI" type="Node" parent="."]
 
-[node name="Label" type="Label" parent="UI"]
-offset_left = 16.0
-offset_top = -342.0
-offset_right = 95.0
-offset_bottom = -319.0
+[node name="DiscardLabel" type="Label" parent="UI"]
+offset_left = 553.0
+offset_top = -32.0
+offset_right = 632.0
+offset_bottom = -9.0
 theme = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 16
 text = "Descarte"
+horizontal_alignment = 1
 
-[node name="DiscardCounter" type="Label" parent="UI"]
-offset_left = 79.0
-offset_top = -342.0
-offset_right = 119.0
-offset_bottom = -310.0
-theme = ExtResource("6_6vh42")
-theme_override_colors/font_color = Color(0.811765, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "0"
-
-[node name="Label2" type="Label" parent="UI"]
-offset_left = 16.0
-offset_top = -327.0
-offset_right = 95.0
-offset_bottom = -304.0
+[node name="DrawLabel" type="Label" parent="UI"]
+offset_left = 3.0
+offset_top = -43.0
+offset_right = 82.0
+offset_bottom = -20.0
 theme = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 16
 text = "Robo"
-
-[node name="DrawCounter" type="Label" parent="UI"]
-offset_left = 79.0
-offset_top = -327.0
-offset_right = 119.0
-offset_bottom = -295.0
-theme = ExtResource("6_6vh42")
-theme_override_colors/font_color = Color(0.913725, 0.878431, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "0"
-
-[node name="Label3" type="Label" parent="UI"]
-offset_left = 16.0
-offset_top = -310.0
-offset_right = 56.0
-offset_bottom = -287.0
-theme = ExtResource("6_6vh42")
-theme_override_font_sizes/font_size = 16
-text = "Mano"
-
-[node name="HandCounter" type="Label" parent="UI"]
-offset_left = 79.0
-offset_top = -310.0
-offset_right = 119.0
-offset_bottom = -278.0
-theme = ExtResource("6_6vh42")
-theme_override_colors/font_color = Color(0, 0.858824, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "0"
+horizontal_alignment = 1
 
 [node name="DrawButton" type="Button" parent="UI"]
+visible = false
 offset_left = 518.0
-offset_top = -71.0
+offset_top = -40.0
 offset_right = 634.0
-offset_bottom = -40.0
+offset_bottom = -9.0
 theme = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 16
 text = "Robar cartas"
 
 [node name="EndTurnButton" type="Button" parent="UI"]
-offset_left = 518.0
-offset_top = -36.0
-offset_right = 634.0
-offset_bottom = -5.0
+offset_left = 396.0
+offset_top = -113.0
+offset_right = 512.0
+offset_bottom = -82.0
 theme = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 16
 text = "Acabar turno"
 
+[node name="EnergyUI" parent="UI" instance=ExtResource("7_f4pi3")]
+offset_left = 291.0
+offset_top = -104.0
+offset_right = 291.0
+offset_bottom = -104.0
+scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI"]
+position = Vector2(586, -60)
+scale = Vector2(2, 2)
+texture = ExtResource("8_66ngm")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(44, -65)
+scale = Vector2(2, 2)
+texture = ExtResource("8_66ngm")
+
+[node name="DiscardPileIcon" type="TextureRect" parent="UI"]
+offset_left = 528.0
+offset_top = -58.0
+offset_right = 568.0
+offset_bottom = -18.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_03edq")
+
+[node name="DiscardCounter" type="Label" parent="UI/DiscardPileIcon"]
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 35.0
+theme = ExtResource("6_6vh42")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
+[node name="DrawPileIcon" type="TextureRect" parent="UI"]
+offset_left = 63.0
+offset_top = -60.0
+offset_right = 103.0
+offset_bottom = -20.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_03edq")
+
+[node name="DrawCounter" type="Label" parent="UI/DrawPileIcon"]
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 35.0
+theme = ExtResource("6_6vh42")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Punky1" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(505, -159)
+position = Vector2(387, -195)
 
 [node name="Punky2" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(396, -174)
+position = Vector2(488, -186)
 
+[node name="Punky3" parent="Enemies" instance=ExtResource("4_4k1nj")]
+position = Vector2(577, -198)
+
+[node name="VictoryUI" type="Container" parent="."]
+visible = false
+z_index = 100
+offset_left = 56.0
+offset_top = -318.0
+offset_right = 96.0
+offset_bottom = -278.0
+scale = Vector2(13.4839, 6.9955)
+mouse_filter = 2
+script = ExtResource("9_yahae")
+
+[node name="Panel" type="ColorRect" parent="VictoryUI"]
+z_index = 100
+layout_mode = 2
+color = Color(0, 0, 0, 0.572549)
+
+[node name="LoseLabel" type="Label" parent="VictoryUI/Panel"]
+visible = false
+z_index = 100
+layout_mode = 0
+offset_left = 5.62362
+offset_top = 10.005
+offset_right = 141.624
+offset_bottom = 42.005
+scale = Vector2(0.219441, 0.525209)
+theme = ExtResource("6_6vh42")
+text = "has muerto"
+
+[node name="WinLabel" type="Label" parent="VictoryUI/Panel"]
+z_index = 100
+layout_mode = 0
+offset_left = 6.62337
+offset_top = 9.89384
+offset_right = 140.623
+offset_bottom = 41.8938
+scale = Vector2(0.219441, 0.525209)
+theme = ExtResource("6_6vh42")
+text = "has ganado"
+
+[connection signal="current_energy_changed" from="Player" to="." method="_on_player_current_energy_changed"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="ended_player_turn" from="Player" to="." method="_on_player_ended_player_turn"]
+[connection signal="max_energy_changed" from="Player" to="." method="_on_player_max_energy_changed"]
 [connection signal="no_enemies_left" from="TurnManager" to="." method="_on_no_enemies_left"]
 [connection signal="player_turn_ended" from="TurnManager" to="TurnManager" method="_on_player_turn_ended"]
 [connection signal="round_ended" from="TurnManager" to="." method="_on_round_ended"]

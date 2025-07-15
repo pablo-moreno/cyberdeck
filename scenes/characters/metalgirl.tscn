@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://r1koqq2d15u" path="res://sprites/characters/metalgirl.png" id="2_qkf0o"]
 [ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/cards/pile.gd" id="3_ppwyf"]
-[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/Card.tscn" id="4_ppwyf"]
+[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/card.tscn" id="4_ppwyf"]
 [ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="5_gjix5"]
 [ext_resource type="Script" uid="uid://b1oja3s2i1c3s" path="res://scripts/traits/extra_draw_trait.gd" id="6_r71r1"]
 [ext_resource type="Script" uid="uid://c2x2a1fr37er3" path="res://scripts/traits/extra_energy_trait.gd" id="7_copgy"]
@@ -13,7 +13,7 @@
 radius = 44.0
 height = 104.0
 
-[node name="Metalgirl" type="CharacterBody2D" groups=["dropable"]]
+[node name="Metalgirl" type="CharacterBody2D"]
 script = ExtResource("1_cxrlw")
 metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
 
@@ -32,61 +32,78 @@ metadata/_custom_type_script = "uid://bxcm4afx5th3e"
 
 [node name="Card11" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 
 [node name="Card10" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 
 [node name="Card9" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 
 [node name="Card8" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 
 [node name="Card7" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 
 [node name="Card6" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 
 [node name="Card5" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Ataque"
+energy = 1
 
 [node name="Card4" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Quinta"
+energy = 0
 type = 1
 
 [node name="Card3" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Diatónica"
+energy = 2
 type = 1
 
 [node name="Card2" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Mixolidio"
+energy = 1
 
 [node name="Card" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Lidio"
+energy = 2
 
 [node name="Card12" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 4
 type = 1
 
 [node name="Card13" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
-
-[node name="Card14" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-type = 1
+energy = 2
 
 [node name="Card15" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 0
 type = 2
 
 [node name="Card16" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 0
 type = 2
 
 [node name="Card17" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 card_name = "Escala"
+energy = 1
 type = 2
+
+[node name="Card14" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+card_name = "Escala"
+energy = 1
+type = 1
 
 [node name="Draw" type="Node" parent="Piles"]
 script = ExtResource("3_ppwyf")

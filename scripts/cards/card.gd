@@ -14,11 +14,19 @@ enum CARD_TYPE {
 @export var type: CARD_TYPE = CARD_TYPE.BASE
 const SIZE: Vector2 = Vector2(48, 64)
 
+var _player: Character = null
+
+
 signal play_card(targets: Variant)
+signal cannot_play_card(card: Card)
 
 
 func _ready() -> void:
     play_card.connect(play)
+
+
+func set_player(player: Character):
+    _player = player
 
 
 func discard():
@@ -37,6 +45,15 @@ func get_effects() -> Array[CardEffect]:
 
 
 func play(targets: Array[Variant]) -> bool:
+    if energy > _player.current_energy:
+        cannot_play_card.emit(self)
+        return false
+
+    _player.spend_energy(energy)
+
+    for effect in get_effects():
+        effect.apply(self, _player, targets)
+    
     if is_exhaust:
         GlobalSignals.exhaust_card.emit(self)
     else:
@@ -51,4 +68,9 @@ func move_to(target: Pile):
 
 
 func get_description():
-    return tr('Ataca')
+    var description: String = ''
+
+    for effect in get_effects():
+        description += effect.get_description() + "\n"
+
+    return description

@@ -8,6 +8,9 @@ signal death(enemy: Enemy)
 @onready var health: Health = $Health
 @onready var actions: Node = $Actions
 @onready var intention_sprite: Sprite2D = $IntentionSprite
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var dropable_card_area: DropableCardArea = $DropableArea
+@export var modulate_color: Color = Color(1.0, 0.512, 0.433)
 
 
 var _player: Character = null
@@ -18,6 +21,8 @@ func _ready() -> void:
     turn_started.connect(play)
     round_started.connect(_on_round_started)
     health.death.connect(_on_dead)
+    dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
+    dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
 
 func set_player(player: Character):
     _player = player
@@ -59,3 +64,11 @@ func _on_round_started():
     var _next_action = _get_next_action()
     intention_sprite.texture = _next_action.texture
     intention_sprite.texture_changed.emit()
+
+
+func _on_dropable_area_dragging_over() -> void:
+    sprite.modulate = modulate_color
+
+
+func _on_dropable_area_not_dragging() -> void:
+    sprite.modulate = Color(Color.WHITE, 1)

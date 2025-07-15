@@ -22,6 +22,7 @@ texture = ExtResource("2_md0e3")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_4ra3w")
 
 [node name="Health" type="Node" parent="."]

@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d10lw"]
 
 [node name="CardUI" type="Panel"]
+z_index = 20
 texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.143

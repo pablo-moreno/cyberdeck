@@ -5,5 +5,9 @@ func _ready() -> void:
     pass
 
 
-func apply(card: Card, origin: Character, targets: Array[Character]):
+func apply(card: Card, origin: Character, targets: Array[Variant]):
     pass
+
+
+func get_description():
+    return tr('Attack')

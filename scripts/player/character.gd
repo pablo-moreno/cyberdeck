@@ -6,10 +6,9 @@ class_name Character extends CharacterBody2D
 @onready var hand: Pile = $Piles/Hand
 @onready var exhaust_pile: Pile = $Piles/Exhaust
 @onready var traits: Node = $Traits
-
 @onready var health: Health = $Health
-@export var cards_to_draw: int = 5
 
+@export var cards_to_draw: int = 5
 @export var default_max_energy: int = 3
 @export var max_energy: int = 3
 @export var current_energy: int = 3
@@ -17,13 +16,19 @@ class_name Character extends CharacterBody2D
 
 signal ended_player_turn
 signal started_player_turn
+
 signal current_energy_changed(value: int)
+signal max_energy_changed(value: int)
+
 signal cannot_play_card
 signal hand_reset
+
+signal dead
 
 
 func _ready() -> void:
     move_cards_to_draw()
+    health.death.connect(_on_death)
     GlobalSignals.discard_card.connect(discard_card)
     GlobalSignals.exhaust_card.connect(exhaust_card)
     started_player_turn.connect(start_turn)
@@ -37,6 +42,7 @@ func move_cards_to_draw():
     var cards = deck.get_all_cards()
     
     for card in cards:
+        card.set_player(self)
         card.move_to(draw_pile)
 
 
@@ -58,6 +64,7 @@ func draw_cards(amount: int = 5):
     hand_reset.emit()
 
     _cards = draw_pile.get_cards(amount - _drawed_cards)
+
     for _card in _cards:
         if _card is Card:
             _card.move_to(hand)
@@ -89,8 +96,6 @@ func play_card(card: Card, targets: Array[Enemy]):
         return
     
     var is_exhaust = card.play(targets)
-    current_energy -= card.energy
-    current_energy_changed.emit(current_energy)
 
     if is_exhaust:
         GlobalSignals.exhaust_card.emit(card)
@@ -106,10 +111,9 @@ func end_turn():
 
 
 func start_turn():
-    print("turno de %s" % name)
     apply_effects()
     draw_round_cards()
-    current_energy = max_energy
+    reset_energy()
     GlobalSignals.set_energy_remaining(current_energy)
 
 
@@ -125,3 +129,17 @@ func apply_effects():
 
 func set_max_energy(amount):
     max_energy = amount
+
+
+func reset_energy():
+    current_energy = max_energy
+    current_energy_changed.emit(current_energy)
+
+
+func spend_energy(amount: int):
+    current_energy -= amount
+    current_energy_changed.emit(current_energy)
+
+
+func _on_death():
+    dead.emit()

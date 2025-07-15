@@ -85,6 +85,9 @@ func _on_enemy_dead(enemy: Enemy):
     var enemy_index = enemies.find(enemy)
     enemies.remove_at(enemy_index)
     enemy.queue_free()
+    
+    if len(enemies) == 0:
+        no_enemies_left.emit()
 
 
 func _on_player_turn_ended() -> void:

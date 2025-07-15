@@ -5,11 +5,13 @@ extends Node2D
 @onready var hand: Hand = $Hand
 @onready var turn_manager: TurnManager = $TurnManager
 
-@onready var discard_counter := $UI/DiscardCounter
-@onready var draw_counter := $UI/DrawCounter
-@onready var hand_counter := $UI/HandCounter
+@onready var discard_counter: Label = $UI/DiscardPileIcon/DiscardCounter
+@onready var draw_counter: Label = $UI/DrawPileIcon/DrawCounter
+@onready var energy_ui: EnergyUI = $UI/EnergyUI
 
 @onready var enemies_parent: Node = $Enemies
+@onready var victory_ui: VictoryUI = $VictoryUI
+
 
 const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
@@ -20,6 +22,8 @@ func _ready() -> void:
     GlobalSignals.drawn_card.connect(_on_drawn_card)
     draw_counter.text = str(player.draw_pile.get_child_count())
     discard_counter.text = str(player.discard_pile.get_child_count())
+    energy_ui.set_current_energy(player.current_energy)
+    energy_ui.set_max_energy(player.max_energy)
 
 
 func _setup():
@@ -48,7 +52,7 @@ func _on_round_ended():
 
 
 func _on_no_enemies_left():
-    pass
+    victory_ui.set_victory()
 
 
 func _on_turn_manager_turn_ended(character: Character) -> void:
@@ -56,7 +60,6 @@ func _on_turn_manager_turn_ended(character: Character) -> void:
 
 
 func _on_turn_manager_turn_start(character: Character) -> void:
-    print("ME TOCAAAAA")
     player.start_turn()
 
 
@@ -70,11 +73,21 @@ func _on_end_turn_pressed() -> void:
 
 func _on_card_discarded(_card: Card):
     draw_counter.text = str(player.draw_pile.get_child_count())
-    hand_counter.text = str(player.hand.get_child_count())
     discard_counter.text = str(player.discard_pile.get_child_count())
 
 
 func _on_drawn_card(_card: Card):
     draw_counter.text = str(player.draw_pile.get_child_count())
-    hand_counter.text = str(player.hand.get_child_count())
     discard_counter.text = str(player.discard_pile.get_child_count())
+
+
+func _on_player_current_energy_changed(value: int) -> void:
+    energy_ui.set_current_energy(value)
+
+
+func _on_player_max_energy_changed(value: int) -> void:
+    energy_ui.set_max_energy(value)
+
+
+func _on_player_dead() -> void:
+    victory_ui.set_defeat()
