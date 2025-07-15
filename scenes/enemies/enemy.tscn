@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba22dkscl62q5"]
+[gd_scene load_steps=9 format=3 uid="uid://ba22dkscl62q5"]
 
 [ext_resource type="Script" uid="uid://byjr4llf3v7rs" path="res://scripts/enemies/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://bk3nwypv4iwcr" path="res://sprites/characters/punky.png" id="2_md0e3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dx1x5o13r5yho" path="res://scenes/enemies/actions/attack_action.tscn" id="4_fcftc"]
 [ext_resource type="PackedScene" uid="uid://dy6piolcgrput" path="res://scenes/enemies/actions/shield_action.tscn" id="5_nb6gf"]
 [ext_resource type="PackedScene" uid="uid://b5i3fykbust0s" path="res://scenes/ui/progress_health_bar_gradient.tscn" id="6_nb6gf"]
+[ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="7_jt03m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
 radius = 39.0
@@ -58,3 +59,13 @@ scale = Vector2(0.33, 7.54)
 
 [node name="IntentionSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -62)
+
+[node name="DropableArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -39.0
+offset_top = -46.0
+offset_right = 1.0
+offset_bottom = -6.0
+scale = Vector2(1.96862, 2.50813)
+script = ExtResource("7_jt03m")

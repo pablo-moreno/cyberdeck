@@ -26,6 +26,7 @@ func init() -> void:
         enemy.turn_ended.connect(_on_ended_enemy_turn)
         enemy.death.connect(_on_enemy_dead)
 
+
 func add_enemy(enemy: Enemy):
     enemies.append(enemy)
 
@@ -35,11 +36,11 @@ func _get_next() -> Enemy:
         no_enemies_left.emit()
         round_ended.emit()
         return
-    
+
     if current_enemy_index == len(enemies):
         round_ended.emit()
         return
-        
+
     var enemy: Enemy = enemies.get(current_enemy_index)
     current_enemy_index += 1
     _enemies_that_acted.append(enemy)

@@ -14,6 +14,5 @@ enum TYPE {
 var _count = 0
 
 
-
 func apply(target: Character):
     pass

@@ -30,11 +30,11 @@ player = NodePath("../Player")
 metadata/_custom_type_script = "uid://b56rnmt62xd1s"
 
 [node name="Hand" parent="." instance=ExtResource("4_a12nh")]
-offset_left = 76.0
-offset_top = -73.0
-offset_right = 478.0
-offset_bottom = -1.0
-scale = Vector2(1.16, 1)
+offset_left = 95.0
+offset_top = -77.0
+offset_right = 497.0
+offset_bottom = -5.0
+scale = Vector2(1.04, 1)
 
 [node name="UI" type="Node" parent="."]
 

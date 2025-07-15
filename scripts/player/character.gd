@@ -83,12 +83,12 @@ func exhaust_card(card: Card):
     card.move_to(exhaust_pile)
 
 
-func play_card(card: Card, targets: Array[Character]):
+func play_card(card: Card, targets: Array[Enemy]):
     if card.energy > current_energy:
         cannot_play_card.emit()
         return
     
-    var is_exhaust = card.play(self, targets)
+    var is_exhaust = card.play(targets)
     current_energy -= card.energy
     current_energy_changed.emit(current_energy)
 
@@ -110,6 +110,7 @@ func start_turn():
     apply_effects()
     draw_round_cards()
     current_energy = max_energy
+    GlobalSignals.set_energy_remaining(current_energy)
 
 
 func apply_effects():

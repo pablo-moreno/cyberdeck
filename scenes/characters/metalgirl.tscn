@@ -13,7 +13,7 @@
 radius = 44.0
 height = 104.0
 
-[node name="Metalgirl" type="CharacterBody2D"]
+[node name="Metalgirl" type="CharacterBody2D" groups=["dropable"]]
 script = ExtResource("1_cxrlw")
 metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
 

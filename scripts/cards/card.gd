@@ -14,9 +14,11 @@ enum CARD_TYPE {
 @export var type: CARD_TYPE = CARD_TYPE.BASE
 const SIZE: Vector2 = Vector2(48, 64)
 
+signal play_card(targets: Variant)
+
 
 func _ready() -> void:
-    pass
+    play_card.connect(play)
 
 
 func discard():
@@ -34,9 +36,11 @@ func get_effects() -> Array[CardEffect]:
     return effects
 
 
-func play(origin: Character, targets: Array[Character]) -> bool:
-    for effect in get_effects():
-        effect.apply(self, origin, targets)
+func play(targets: Array[Variant]) -> bool:
+    if is_exhaust:
+        GlobalSignals.exhaust_card.emit(self)
+    else:
+        GlobalSignals.discard_card.emit(self)
     
     return is_exhaust
 

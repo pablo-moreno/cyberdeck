@@ -1,16 +1,18 @@
-class_name CardUI extends Panel
+class_name CardUI extends Draggable
 
 
 @export var _card: Card = null
 @export_range(1.0, 1.5) var hover_transform = 1.25
 @export_range(0, 24) var hover_up_pixels = 12
 
-@onready var base_sprite: Sprite2D = $BaseCard
-@onready var purple_sprite: Sprite2D = $PurpleCard
-@onready var gold_sprite: Sprite2D = $GoldCard
 
-@onready var title: Label = $TitleLabel
-@onready var energy: Label = $EnergyLabel
+@onready var ui: Control = $UI
+@onready var base_sprite: Sprite2D = $UI/BaseCard
+@onready var purple_sprite: Sprite2D = $UI/PurpleCard
+@onready var gold_sprite: Sprite2D = $UI/GoldCard
+
+@onready var title: Label = $UI/TitleLabel
+@onready var energy: Label = $UI/EnergyLabel
 
 
 func _ready() -> void:
@@ -68,5 +70,10 @@ func _on_mouse_exited() -> void:
 
 
 func _on_hover_rect_gui_input(event: InputEvent) -> void:
-    if event.is_pressed():
-        GlobalSignals.discard_card.emit(_card)
+    pass
+
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+    var prev = duplicate()
+    set_drag_preview(prev)
+    return _card
