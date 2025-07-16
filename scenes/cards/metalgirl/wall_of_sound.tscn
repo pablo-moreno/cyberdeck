@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc6g2f7p8cr24"]
+
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_cco6u"]
+[ext_resource type="Script" uid="uid://dl2ovw7kpojh3" path="res://scripts/cards/effects/shield_effect.gd" id="2_r7ile"]
+
+[node name="SoundWall" type="Node"]
+script = ExtResource("1_cco6u")
+card_name = "Muro de ruido"
+energy = 1
+target_type = 2
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="ShieldEffect" type="Node" parent="."]
+script = ExtResource("2_r7ile")
+metadata/_custom_type_script = "uid://dl2ovw7kpojh3"

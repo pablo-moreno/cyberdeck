@@ -1,5 +1,7 @@
 class_name Character extends CharacterBody2D
 
+#region Nodes
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var deck: Pile = $Piles/Deck
 @onready var draw_pile: Pile = $Piles/Draw
 @onready var discard_pile: Pile = $Piles/Discard
@@ -7,13 +9,18 @@ class_name Character extends CharacterBody2D
 @onready var exhaust_pile: Pile = $Piles/Exhaust
 @onready var traits: Node = $Traits
 @onready var health: Health = $Health
+@onready var dropable_card_area: DropableCardArea = $DropableCardArea
+#endregion
 
+#region Exported variables
 @export var cards_to_draw: int = 5
 @export var default_max_energy: int = 3
 @export var max_energy: int = 3
 @export var current_energy: int = 3
+@export var modulate_color: Color = Color(0.0, 0.863, 0.863)
+#endregion
 
-
+#region Signals
 signal ended_player_turn
 signal started_player_turn
 
@@ -24,6 +31,7 @@ signal cannot_play_card
 signal hand_reset
 
 signal dead
+#endregion
 
 
 func _ready() -> void:
@@ -32,8 +40,11 @@ func _ready() -> void:
     GlobalSignals.discard_card.connect(discard_card)
     GlobalSignals.exhaust_card.connect(exhaust_card)
     started_player_turn.connect(start_turn)
+    dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
+    dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
 
 
+#region Card handling
 func _get_cards_to_draw() -> int:
     return cards_to_draw
 
@@ -105,7 +116,9 @@ func play_card(card: Card, targets: Array[Enemy]):
     current_energy -= card.energy
     current_energy_changed.emit(current_energy)
 
+#endregion
 
+#region Turn management
 func end_turn():
     ended_player_turn.emit()
 
@@ -114,6 +127,7 @@ func start_turn():
     apply_effects()
     draw_round_cards()
     reset_energy()
+    health.reset_shield()
     GlobalSignals.set_energy_remaining(current_energy)
 
 
@@ -139,7 +153,18 @@ func reset_energy():
 func spend_energy(amount: int):
     current_energy -= amount
     current_energy_changed.emit(current_energy)
+    
+#endregion
 
-
+#region Signal events
 func _on_death():
     dead.emit()
+
+
+func _on_dropable_area_dragging_over() -> void:
+    sprite.modulate = modulate_color
+
+
+func _on_dropable_area_not_dragging() -> void:
+    sprite.modulate = Color(Color.WHITE, 1)
+#endregion

@@ -2,8 +2,8 @@
 
 [sub_resource type="Gradient" id="Gradient_juggl"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.679181)
-colors = PackedColorArray(0.999891, 0.425899, 0.357204, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.643885, 0.755639)
+colors = PackedColorArray(0.176471, 0.611765, 0.827451, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [resource]
 gradient = SubResource("Gradient_juggl")

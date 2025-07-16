@@ -12,5 +12,5 @@ enum TYPE {
 @onready var icon: Sprite2D = $Icon
 
 
-func run(player: Character, enemy: Enemy):
+func run(_player: Character, _enemy: Enemy):
     pass

@@ -12,6 +12,8 @@ enum CARD_TYPE {
 @export_range(0, 9) var energy: int = 3
 
 @export var type: CARD_TYPE = CARD_TYPE.BASE
+@export var target_type: GlobalSignals.TargetType = GlobalSignals.TargetType.ENEMY
+
 const SIZE: Vector2 = Vector2(48, 64)
 
 var _player: Character = null
@@ -65,6 +67,10 @@ func play(targets: Array[Variant]) -> bool:
 func move_to(target: Pile):
     reparent(target)        
     GlobalSignals.card_changed_pile.emit(self, target)
+
+
+func get_card_name():
+    return tr(name)
 
 
 func get_description():

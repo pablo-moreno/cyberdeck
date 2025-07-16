@@ -2,6 +2,13 @@ class_name Globals
 extends Node
 
 
+enum TargetType {
+    ALL_ENEMIES,
+    ENEMY,
+    PLAYER,
+}
+
+
 signal card_changed_pile(card: Card, pile: Pile)
 signal enemy_dead(character: Character)
 

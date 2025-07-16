@@ -3,14 +3,13 @@ This class handles everything about health management.
 """
 class_name Health extends Node
 
-# Properties variables
-
+#region Properties variables
 @export var health = 100
 @export var current_max_health = 100
 @export var current_shield = 0
+#endregion
 
-# Signals
-
+#region Signals
 ## Emitted when the health is lowered to 0
 signal death
 
@@ -28,6 +27,7 @@ signal damaged(amount: int)
 
 ## Emitted after healing
 signal healed
+#endregion
 
 func _ready():
     change_health.emit(health)

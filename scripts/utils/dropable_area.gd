@@ -1,10 +1,10 @@
 class_name DropableCardArea extends Control
 
-
 signal dragging_over
 signal not_dragging
 
-var _is_mouse_over: bool = false
+
+@export var target_type: GlobalSignals.TargetType = GlobalSignals.TargetType.ENEMY
 
 
 func _ready() -> void:
@@ -15,18 +15,25 @@ func _get_targets():
     return [get_parent()]
 
 
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+    if data is not CardUI:
+        return false
+    
+    var card_ui: CardUI = data
+    var _card: Card = card_ui.get_card()
+
+    if _card.target_type != target_type:
+        return false
+    
     dragging_over.emit()
-    if data is CardUI:
-        return true
-    return false
+    return true
+    
 
-
-func _drop_data(at_position: Vector2, card: Variant) -> void:
+func _drop_data(_at_position: Vector2, card: Variant) -> void:
     var targets = _get_targets()
 
     if card is CardUI:
-        card._card.play_card.emit(targets)
+        card.get_card().play_card.emit(targets)
     not_dragging.emit()
 
 

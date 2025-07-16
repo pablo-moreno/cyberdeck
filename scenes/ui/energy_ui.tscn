@@ -14,6 +14,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_6sggc")
 
 [node name="CurrentEnergyLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -12.0
 offset_top = -17.0
 offset_right = 16.0

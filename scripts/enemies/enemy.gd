@@ -24,6 +24,7 @@ func _ready() -> void:
     dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
 
+
 func set_player(player: Character):
     _player = player
 
@@ -43,7 +44,6 @@ func _get_next_action() -> Action:
     return null
 
 func _apply_next_action():
-    print('turno de %s' % name)
     var actions_count = actions.get_child_count()
     var action = _get_next_action()
     action.run(_player, self)

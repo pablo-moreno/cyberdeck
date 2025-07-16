@@ -5,7 +5,6 @@ class_name CardUI extends Draggable
 @export_range(1.0, 1.5) var hover_transform = 1.25
 @export_range(0, 24) var hover_up_pixels = 12
 
-
 @onready var ui: Control = $UI
 @onready var base_sprite: Sprite2D = $UI/BaseCard
 @onready var purple_sprite: Sprite2D = $UI/PurpleCard
@@ -27,6 +26,10 @@ func _ready() -> void:
 func set_card(card: Card):
     _card = card
     _attach_signals()
+
+
+func get_card() -> Card:
+    return _card
 
 
 func remove_card(card: Card):
@@ -70,10 +73,6 @@ func _on_mouse_exited() -> void:
     position.y = position.y + hover_up_pixels
     size = size / hover_transform
     z_index = 0
-
-
-func _on_hover_rect_gui_input(event: InputEvent) -> void:
-    pass
 
 
 func _edit_preview_node(node: Draggable):

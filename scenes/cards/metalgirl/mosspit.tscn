@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbm1nd6yphkxl"]
+
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_w4d46"]
+[ext_resource type="Script" uid="uid://d0w2vuqfcgvk4" path="res://scripts/cards/effects/remove_enemy_shield_effect.gd" id="2_fwt4q"]
+[ext_resource type="Script" uid="uid://b5vi6tkuxmwiy" path="res://scripts/cards/effects/attack_effect.gd" id="3_f8m6e"]
+
+[node name="Mosspit" type="Node"]
+script = ExtResource("1_w4d46")
+card_name = "Moss Pit"
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="RemoveEnemyShieldEffect" type="Node" parent="."]
+script = ExtResource("2_fwt4q")
+metadata/_custom_type_script = "uid://d0w2vuqfcgvk4"
+
+[node name="AttackEffect" type="Node" parent="."]
+script = ExtResource("3_f8m6e")
+metadata/_custom_type_script = "uid://b5vi6tkuxmwiy"

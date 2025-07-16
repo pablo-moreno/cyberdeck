@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=13 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://r1koqq2d15u" path="res://sprites/characters/metalgirl.png" id="2_qkf0o"]
 [ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/cards/pile.gd" id="3_ppwyf"]
-[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/card.tscn" id="4_ppwyf"]
+[ext_resource type="PackedScene" uid="uid://bbm1nd6yphkxl" path="res://scenes/cards/metalgirl/mosspit.tscn" id="4_bc2xx"]
+[ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/metalgirl/metalbass.tscn" id="4_ppwyf"]
+[ext_resource type="PackedScene" uid="uid://bc6g2f7p8cr24" path="res://scenes/cards/metalgirl/wall_of_sound.tscn" id="5_bhie5"]
 [ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="5_gjix5"]
 [ext_resource type="Script" uid="uid://b1oja3s2i1c3s" path="res://scripts/traits/extra_draw_trait.gd" id="6_r71r1"]
 [ext_resource type="Script" uid="uid://c2x2a1fr37er3" path="res://scripts/traits/extra_energy_trait.gd" id="7_copgy"]
 [ext_resource type="PackedScene" uid="uid://b5i3fykbust0s" path="res://scenes/ui/progress_health_bar_gradient.tscn" id="8_1ie2l"]
+[ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="10_kpmjy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkf0o"]
 radius = 44.0
@@ -22,6 +25,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_qkf0o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_qkf0o")
 
 [node name="Piles" type="Node" parent="."]
@@ -30,80 +34,27 @@ shape = SubResource("CapsuleShape2D_qkf0o")
 script = ExtResource("3_ppwyf")
 metadata/_custom_type_script = "uid://bxcm4afx5th3e"
 
-[node name="Card11" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
+[node name="Mosspit" parent="Piles/Deck" instance=ExtResource("4_bc2xx")]
 
-[node name="Card10" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
+[node name="Metalbass" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card9" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
+[node name="Metalbass2" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card8" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
+[node name="Metalbass3" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card7" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
+[node name="WallOfSound" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
-[node name="Card6" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
+[node name="WallOfSound2" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
-[node name="Card5" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Ataque"
-energy = 1
+[node name="Metalbass4" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card4" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Quinta"
-energy = 0
-type = 1
+[node name="Metalbass5" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card3" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Diatónica"
-energy = 2
-type = 1
+[node name="Metalbass6" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card2" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Mixolidio"
-energy = 1
+[node name="Metalbass7" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Card" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Lidio"
-energy = 2
-
-[node name="Card12" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 4
-type = 1
-
-[node name="Card13" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 2
-
-[node name="Card15" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 0
-type = 2
-
-[node name="Card16" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 0
-type = 2
-
-[node name="Card17" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
-type = 2
-
-[node name="Card14" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-card_name = "Escala"
-energy = 1
-type = 1
+[node name="WallOfSound3" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
 [node name="Draw" type="Node" parent="Piles"]
 script = ExtResource("3_ppwyf")
@@ -141,3 +92,15 @@ offset_top = 59.0
 offset_right = 223.0
 offset_bottom = 60.0
 scale = Vector2(0.33, 7.539)
+
+[node name="DropableCardArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -38.0
+offset_top = -52.0
+offset_right = 2.0
+offset_bottom = -12.0
+scale = Vector2(2.11149, 2.57972)
+script = ExtResource("10_kpmjy")
+target_type = 2
+metadata/_custom_type_script = "uid://cw68u1tj5oj6p"

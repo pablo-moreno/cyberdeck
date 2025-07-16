@@ -13,7 +13,7 @@ func _on_dragging():
     visible = false
 
 
-func _edit_preview_node(node: Draggable):
+func _edit_preview_node(_node: Draggable):
     pass
 
 
