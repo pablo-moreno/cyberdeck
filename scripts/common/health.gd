@@ -19,6 +19,9 @@ signal change_health(new_health: int)
 ## Emitted when shield is changed
 signal changed_current_shield(new_shield: int)
 
+
+signal shielded_damage(value: int)
+
 ## Emitted when max health is changed
 signal change_max_health(new_max_health: int)
 
@@ -43,9 +46,13 @@ func take_damage(amount: int) -> void:
         - damaged
         - death
     """
+    var initial_shield = current_shield
     var damage_without_shield = max(amount - current_shield, 0)
     current_shield = max(current_shield - amount, 0)
     changed_current_shield.emit(current_shield)
+    
+    if current_shield < initial_shield:
+        shielded_damage.emit(initial_shield - current_shield)
     
     health = max(health - damage_without_shield, 0)
     change_health.emit(health)

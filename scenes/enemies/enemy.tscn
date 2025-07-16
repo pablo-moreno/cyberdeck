@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ba22dkscl62q5"]
+[gd_scene load_steps=49 format=3 uid="uid://ba22dkscl62q5"]
 
 [ext_resource type="Script" uid="uid://byjr4llf3v7rs" path="res://scripts/enemies/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://dlii1jn5jff7c" path="res://sprites/characters/cyborg-Sheet.png" id="2_jt03m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dy6piolcgrput" path="res://scenes/enemies/actions/shield_action.tscn" id="5_nb6gf"]
 [ext_resource type="PackedScene" uid="uid://b5i3fykbust0s" path="res://scenes/ui/progress_health_bar_gradient.tscn" id="6_nb6gf"]
 [ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="7_jt03m"]
+[ext_resource type="PackedScene" uid="uid://cbi7v731b1tpy" path="res://scenes/ui/damage_indicator.tscn" id="8_n7575"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jt03m"]
 atlas = ExtResource("2_jt03m")
@@ -123,6 +124,22 @@ region = Rect2(336, 0, 48, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_72k7o"]
 atlas = ExtResource("2_jt03m")
 region = Rect2(384, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4v2h"]
+atlas = ExtResource("2_jt03m")
+region = Rect2(1296, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lirnq"]
+atlas = ExtResource("2_jt03m")
+region = Rect2(1344, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ly7j"]
+atlas = ExtResource("2_jt03m")
+region = Rect2(1392, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33cra"]
+atlas = ExtResource("2_jt03m")
+region = Rect2(1440, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jbd4"]
 atlas = ExtResource("2_jt03m")
@@ -250,6 +267,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t4v2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lirnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ly7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33cra")
+}],
+"loop": false,
+"name": &"shield",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8jbd4")
 }, {
 "duration": 1.0,
@@ -319,8 +353,8 @@ metadata/_custom_type_script = "uid://byjr4llf3v7rs"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nb6gf")
-animation = &"shoot"
-frame = 17
+animation = &"shield"
+frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -330,7 +364,7 @@ shape = SubResource("CapsuleShape2D_4ra3w")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_4ra3w")
 health = 4
-current_max_health = 32
+current_max_health = 4
 metadata/_custom_type_script = "uid://crfstdtmbnfuv"
 
 [node name="Actions" type="Control" parent="."]
@@ -372,3 +406,7 @@ offset_right = 1.0
 offset_bottom = -6.0
 scale = Vector2(1.96862, 2.50813)
 script = ExtResource("7_jt03m")
+
+[node name="DamageIndicator" parent="." instance=ExtResource("8_n7575")]
+offset_top = 1.0
+offset_bottom = 1.0

@@ -19,8 +19,6 @@ func init() -> void:
     round_started.connect(_on_round_started)
     round_ended.connect(_on_round_ended)
     round_started.emit()
-    player.ended_player_turn.connect(_on_ended_player_turn)
-    player.started_player_turn.connect(_on_started_player_turn)
     
     for enemy in enemies:
         enemy.turn_ended.connect(_on_ended_enemy_turn)
@@ -37,7 +35,7 @@ func _get_next() -> Enemy:
         round_ended.emit()
         return
 
-    if current_enemy_index == len(enemies):
+    if current_enemy_index >= len(enemies):
         round_ended.emit()
         return
 
@@ -51,10 +49,6 @@ func _get_next() -> Enemy:
 func reset_enemies():
     current_enemy_index = 0
     _enemies_that_acted = []
-
-
-func _on_started_player_turn():
-    pass
 
 
 func _on_ended_player_turn():

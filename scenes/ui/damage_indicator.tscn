@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbi7v731b1tpy"]
+
+[ext_resource type="Script" uid="uid://cymrgixu8gl3v" path="res://scripts/ui/damage_indicator.gd" id="1_jx630"]
+[ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="1_rqk2v"]
+
+[sub_resource type="Curve2D" id="Curve2D_jx630"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -39, -80)
+}
+point_count = 2
+
+[node name="DamageIndicator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jx630")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jx630")
+
+[node name="ShieldPathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotation = -2.02439
+loop = false
+
+[node name="ShieldLabel" type="Label" parent="Path2D2/ShieldPathFollow2D"]
+offset_right = 40.0
+offset_bottom = 32.0
+rotation = 2.0944
+pivot_offset = Vector2(20.3722, 17.2657)
+theme = ExtResource("1_rqk2v")
+theme_override_colors/font_color = Color(0.369739, 0.563836, 0.99347, 1)
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jx630")
+
+[node name="DamagePathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = -2.02439
+
+[node name="DamageLabel" type="Label" parent="Path2D/DamagePathFollow2D"]
+offset_left = 3.85641
+offset_top = -25.3205
+offset_right = 43.8564
+offset_bottom = 6.67949
+rotation = -4.18879
+pivot_offset = Vector2(20, 16)
+theme = ExtResource("1_rqk2v")
+theme_override_colors/font_color = Color(1, 0.124572, 0.0864938, 1)
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1

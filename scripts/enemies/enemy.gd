@@ -21,6 +21,7 @@ signal animate_action(name: String)
 var _player: Character = null
 var _current_action_index: int = 0
 var is_dead: bool = false
+var is_active: bool = false
 
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func _ready() -> void:
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
     sprite.animation_finished.connect(_on_animation_finished)
     sprite.play('idle')
+    is_active = false
 
 
 func set_player(player: Character):
@@ -39,6 +41,7 @@ func set_player(player: Character):
 
 
 func play():
+    is_active = true
     health.reset_shield()
     _apply_next_action()
 
@@ -66,6 +69,8 @@ func _apply_next_action():
 
 
 func _end_turn():
+    is_active = false
+
     if sprite.animation_finished.is_connected(_end_turn):
         sprite.animation_finished.disconnect(_end_turn)
 
@@ -77,9 +82,9 @@ func _on_dead():
     intention_sprite.visible = false
     is_dead = true
     sprite.play("dead")
-    
 
-func _on_damaged(amount: int):
+
+func _on_damaged(_amount: int):
     sprite.play('damaged')
 
 
@@ -102,7 +107,7 @@ func _on_animation_finished():
 
     if is_dead:
         _emit_death()
-    else:
+    elif is_active:
         _end_turn()
 
 
