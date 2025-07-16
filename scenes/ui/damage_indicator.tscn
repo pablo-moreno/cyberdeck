@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_jx630"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -39, -80)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -82)
 }
 point_count = 2
 
@@ -18,13 +18,13 @@ script = ExtResource("1_jx630")
 curve = SubResource("Curve2D_jx630")
 
 [node name="ShieldPathFollow2D" type="PathFollow2D" parent="Path2D2"]
-rotation = -2.02439
+rotation = -1.5708
 loop = false
 
 [node name="ShieldLabel" type="Label" parent="Path2D2/ShieldPathFollow2D"]
 offset_right = 40.0
 offset_bottom = 32.0
-rotation = 2.0944
+rotation = 1.5708
 pivot_offset = Vector2(20.3722, 17.2657)
 theme = ExtResource("1_rqk2v")
 theme_override_colors/font_color = Color(0.369739, 0.563836, 0.99347, 1)
@@ -36,14 +36,14 @@ vertical_alignment = 1
 curve = SubResource("Curve2D_jx630")
 
 [node name="DamagePathFollow2D" type="PathFollow2D" parent="Path2D"]
-rotation = -2.02439
+rotation = -1.5708
 
 [node name="DamageLabel" type="Label" parent="Path2D/DamagePathFollow2D"]
 offset_left = 3.85641
 offset_top = -25.3205
 offset_right = 43.8564
 offset_bottom = 6.67949
-rotation = -4.18879
+rotation = -4.71239
 pivot_offset = Vector2(20, 16)
 theme = ExtResource("1_rqk2v")
 theme_override_colors/font_color = Color(1, 0.124572, 0.0864938, 1)

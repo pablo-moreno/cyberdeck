@@ -363,8 +363,8 @@ shape = SubResource("CapsuleShape2D_4ra3w")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_4ra3w")
-health = 4
-current_max_health = 4
+health = 12
+current_max_health = 12
 metadata/_custom_type_script = "uid://crfstdtmbnfuv"
 
 [node name="Actions" type="Control" parent="."]

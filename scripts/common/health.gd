@@ -56,7 +56,9 @@ func take_damage(amount: int) -> void:
     
     health = max(health - damage_without_shield, 0)
     change_health.emit(health)
-    damaged.emit(amount)
+    
+    if damage_without_shield > 0:
+        damaged.emit(damage_without_shield)
 
     if health == 0:
         death.emit()

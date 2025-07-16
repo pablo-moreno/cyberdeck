@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=14 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://r1koqq2d15u" path="res://sprites/characters/metalgirl.png" id="2_qkf0o"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c2x2a1fr37er3" path="res://scripts/traits/extra_energy_trait.gd" id="7_copgy"]
 [ext_resource type="PackedScene" uid="uid://b5i3fykbust0s" path="res://scenes/ui/progress_health_bar_gradient.tscn" id="8_1ie2l"]
 [ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="10_kpmjy"]
+[ext_resource type="PackedScene" uid="uid://cbi7v731b1tpy" path="res://scenes/ui/damage_indicator.tscn" id="12_div4b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkf0o"]
 radius = 44.0
@@ -104,3 +105,5 @@ scale = Vector2(2.11149, 2.57972)
 script = ExtResource("10_kpmjy")
 target_type = 2
 metadata/_custom_type_script = "uid://cw68u1tj5oj6p"
+
+[node name="DamageIndicator" parent="." instance=ExtResource("12_div4b")]

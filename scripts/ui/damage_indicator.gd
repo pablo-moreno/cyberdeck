@@ -31,7 +31,7 @@ func _reset_damage_label():
 func _on_damaged(amount: int):
     damage_label.text = str(amount)
     var _tween = create_tween()
-    _tween.tween_property(damage_path_follow, "progress_ratio", 1, animation_time).set_ease(Tween.EASE_IN)
+    _tween.tween_property(damage_path_follow, "progress_ratio", 1, animation_time).set_ease(Tween.EASE_IN_OUT)
     await _tween.finished
     
     _reset_damage_label()
@@ -45,5 +45,5 @@ func _on_shielded(amount: int):
     shield_label.text = str(amount)
     
     var _tween = create_tween()
-    _tween.tween_property(shield_path_follow, "progress_ratio", 1, animation_time)
+    _tween.tween_property(shield_path_follow, "progress_ratio", 1, animation_time).set_ease(Tween.EASE_IN_OUT)
     _tween.finished.connect(_reset_shield_label)
