@@ -30,7 +30,7 @@ func _ready() -> void:
     health.damaged.connect(_on_damaged)
     dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
-    sprite.animation_finished.connect(_emit_death)
+    sprite.animation_finished.connect(_on_animation_finished)
     sprite.play('idle')
 
 
@@ -41,7 +41,6 @@ func set_player(player: Character):
 func play():
     health.reset_shield()
     _apply_next_action()
-    _end_turn()
 
 func _get_next_action() -> Action:
     var action = actions.get_child(_current_action_index)
@@ -54,26 +53,31 @@ func _get_next_action() -> Action:
 func _apply_next_action():
     var actions_count = actions.get_child_count()
     var action = _get_next_action()
-    var action_animation = action.animation
+
+    sprite.play(action.animation_name)
     action.run(_player, self)
-    
+
     _current_action_index += 1
-    
+
     if _current_action_index == actions_count:
         _current_action_index = 0
-    
+
     action.icon.visible = false
 
 
 func _end_turn():
+    if sprite.animation_finished.is_connected(_end_turn):
+        sprite.animation_finished.disconnect(_end_turn)
+
     turn_ended.emit(self)
-    sprite.animation_finished.disconnect(_end_turn)
-    sprite.play('idle')
+
 
 func _on_dead():
     health_progress_bar.visible = false
     intention_sprite.visible = false
+    is_dead = true
     sprite.play("dead")
+    
 
 func _on_damaged(amount: int):
     sprite.play('damaged')
@@ -92,6 +96,15 @@ func _on_dropable_area_dragging_over() -> void:
 func _on_dropable_area_not_dragging() -> void:
     sprite.modulate = Color(Color.WHITE, 1)
 
+
+func _on_animation_finished():
+    sprite.play('idle')
+
+    if is_dead:
+        _emit_death()
+    else:
+        _end_turn()
+
+
 func _emit_death():
     death.emit(self)
-    

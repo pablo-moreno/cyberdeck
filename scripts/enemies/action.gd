@@ -9,11 +9,10 @@ enum TYPE {
 
 @export var type: TYPE = TYPE.ATTACK
 @export var texture: CompressedTexture2D = null
-
-@export var animation: String = 'get_damage'
+@export var animation_name: String = 'shoot'
 
 @onready var icon: Sprite2D = $Icon
 
 
 func run(_player: Character, _enemy: Enemy):
-    pass
+    _enemy.animate_action.emit(animation_name)

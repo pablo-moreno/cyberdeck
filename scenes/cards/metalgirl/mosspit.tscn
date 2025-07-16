@@ -7,6 +7,7 @@
 [node name="Mosspit" type="Node"]
 script = ExtResource("1_w4d46")
 card_name = "Moss Pit"
+type = 1
 metadata/_custom_type_script = "uid://2k4h1j2357l6"
 
 [node name="RemoveEnemyShieldEffect" type="Node" parent="."]

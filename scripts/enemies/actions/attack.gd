@@ -9,5 +9,6 @@ func _get_damage_to_apply(player: Character) -> int:
 
 
 func run(player: Character, enemy: Enemy):
+    super(player, enemy)
     var damage = _get_damage_to_apply(player)
     player.health.take_damage(damage)
