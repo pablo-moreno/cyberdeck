@@ -1,32 +1,146 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbi7v731b1tpy"]
+[gd_scene load_steps=8 format=3 uid="uid://cbi7v731b1tpy"]
 
 [ext_resource type="Script" uid="uid://cymrgixu8gl3v" path="res://scripts/ui/damage_indicator.gd" id="1_jx630"]
 [ext_resource type="Theme" uid="uid://cfos3mcmwvlb3" path="res://themes/theme.tres" id="1_rqk2v"]
 
-[sub_resource type="Curve2D" id="Curve2D_jx630"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -82)
+[sub_resource type="Animation" id="Animation_jx630"]
+resource_name = "shield"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShieldLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
-point_count = 2
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShieldLabel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.25),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShieldLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.210224, 1),
+"update": 0,
+"values": [Vector2(0, -32), Vector2(16, -96)]
+}
+
+[sub_resource type="Animation" id="Animation_yldbh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShieldLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShieldLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShieldLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdyhi"]
+_data = {
+&"RESET": SubResource("Animation_yldbh"),
+&"shield": SubResource("Animation_jx630")
+}
+
+[sub_resource type="Animation" id="Animation_xfsbg"]
+resource_name = "damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.210224, 1),
+"update": 0,
+"values": [Vector2(-48, -32), Vector2(-64, -96)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xfsbg"]
+_data = {
+&"damage": SubResource("Animation_xfsbg")
+}
 
 [node name="DamageIndicator" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_jx630")
 
-[node name="Path2D2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_jx630")
-
-[node name="ShieldPathFollow2D" type="PathFollow2D" parent="Path2D2"]
-rotation = -1.5708
-loop = false
-
-[node name="ShieldLabel" type="Label" parent="Path2D2/ShieldPathFollow2D"]
-offset_left = 23.0
-offset_top = 5.0
-offset_right = 63.0
-offset_bottom = 37.0
-rotation = 1.5708
+[node name="ShieldLabel" type="Label" parent="."]
+offset_top = -32.0
+offset_right = 40.0
 pivot_offset = Vector2(20.3722, 17.2657)
 theme = ExtResource("1_rqk2v")
 theme_override_colors/font_color = Color(0.369739, 0.563836, 0.99347, 1)
@@ -34,22 +148,25 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-16, -2)
-curve = SubResource("Curve2D_jx630")
-
-[node name="DamagePathFollow2D" type="PathFollow2D" parent="Path2D"]
-rotation = -1.5708
-
-[node name="DamageLabel" type="Label" parent="Path2D/DamagePathFollow2D"]
-offset_left = 6.0
+[node name="DamageLabel" type="Label" parent="."]
+offset_left = -48.0
 offset_top = -32.0
-offset_right = 46.0
-offset_bottom = -1.14441e-05
-rotation = -4.71239
+offset_right = -8.0
+rotation = -6.28318
+scale = Vector2(3, 3)
 pivot_offset = Vector2(20, 16)
 theme = ExtResource("1_rqk2v")
 theme_override_colors/font_color = Color(1, 0.124572, 0.0864938, 1)
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ShieldAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sdyhi")
+}
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xfsbg")
+}

@@ -1,7 +1,7 @@
 class_name Character extends CharacterBody2D
 
 #region Nodes
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var deck: Pile = $Piles/Deck
 @onready var draw_pile: Pile = $Piles/Draw
 @onready var discard_pile: Pile = $Piles/Discard
@@ -42,6 +42,7 @@ func _ready() -> void:
     started_player_turn.connect(start_turn)
     dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
+    sprite.play('idle')
 
 
 #region Card handling

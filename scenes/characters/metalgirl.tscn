@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=23 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
-[ext_resource type="Texture2D" uid="uid://r1koqq2d15u" path="res://sprites/characters/metalgirl.png" id="2_qkf0o"]
+[ext_resource type="Texture2D" uid="uid://cd1wt7y6uxxqp" path="res://sprites/characters/metalgirl-Sheet.png" id="2_div4b"]
 [ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/cards/pile.gd" id="3_ppwyf"]
 [ext_resource type="PackedScene" uid="uid://bbm1nd6yphkxl" path="res://scenes/cards/metalgirl/mosspit.tscn" id="4_bc2xx"]
 [ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/metalgirl/metalbass.tscn" id="4_ppwyf"]
@@ -13,6 +13,70 @@
 [ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="10_kpmjy"]
 [ext_resource type="PackedScene" uid="uid://cbi7v731b1tpy" path="res://scenes/ui/damage_indicator.tscn" id="12_div4b"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_div4b"]
+atlas = ExtResource("2_div4b")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfsbp"]
+atlas = ExtResource("2_div4b")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw4i2"]
+atlas = ExtResource("2_div4b")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jynv"]
+atlas = ExtResource("2_div4b")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugl7w"]
+atlas = ExtResource("2_div4b")
+region = Rect2(432, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myut4"]
+atlas = ExtResource("2_div4b")
+region = Rect2(528, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsot8"]
+atlas = ExtResource("2_div4b")
+region = Rect2(624, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v87jk"]
+atlas = ExtResource("2_div4b")
+region = Rect2(720, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myut4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_div4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfsbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw4i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jynv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugl7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myut4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsot8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v87jk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkf0o"]
 radius = 44.0
 height = 104.0
@@ -21,9 +85,11 @@ height = 104.0
 script = ExtResource("1_cxrlw")
 metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("2_qkf0o")
+sprite_frames = SubResource("SpriteFrames_myut4")
+animation = &"idle"
+frame_progress = 0.725594
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -107,4 +173,3 @@ target_type = 2
 metadata/_custom_type_script = "uid://cw68u1tj5oj6p"
 
 [node name="DamageIndicator" parent="." instance=ExtResource("12_div4b")]
-visible = false
