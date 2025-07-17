@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=24 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://cd1wt7y6uxxqp" path="res://sprites/characters/metalgirl-Sheet.png" id="2_div4b"]
@@ -15,35 +15,39 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_div4b"]
 atlas = ExtResource("2_div4b")
-region = Rect2(48, 0, 48, 64)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfsbp"]
 atlas = ExtResource("2_div4b")
-region = Rect2(144, 0, 48, 64)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qw4i2"]
 atlas = ExtResource("2_div4b")
-region = Rect2(240, 0, 48, 64)
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jynv"]
 atlas = ExtResource("2_div4b")
-region = Rect2(336, 0, 48, 64)
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ugl7w"]
 atlas = ExtResource("2_div4b")
-region = Rect2(432, 0, 48, 64)
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myut4"]
 atlas = ExtResource("2_div4b")
-region = Rect2(528, 0, 48, 64)
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsot8"]
 atlas = ExtResource("2_div4b")
-region = Rect2(624, 0, 48, 64)
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v87jk"]
 atlas = ExtResource("2_div4b")
-region = Rect2(720, 0, 48, 64)
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkydp"]
+atlas = ExtResource("2_div4b")
+region = Rect2(768, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_myut4"]
 animations = [{
@@ -71,10 +75,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v87jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkydp")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkf0o"]
@@ -89,7 +96,7 @@ metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_myut4")
 animation = &"idle"
-frame_progress = 0.725594
+frame_progress = 0.14909
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
