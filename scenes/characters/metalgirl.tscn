@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=37 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://cd1wt7y6uxxqp" path="res://sprites/characters/metalgirl-Sheet.png" id="2_div4b"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://crfstdtmbnfuv" path="res://scripts/common/health.gd" id="5_gjix5"]
 [ext_resource type="Script" uid="uid://b1oja3s2i1c3s" path="res://scripts/traits/extra_draw_trait.gd" id="6_r71r1"]
 [ext_resource type="Script" uid="uid://c2x2a1fr37er3" path="res://scripts/traits/extra_energy_trait.gd" id="7_copgy"]
+[ext_resource type="PackedScene" uid="uid://d1yuj5jbg1tdx" path="res://scenes/cards/metalgirl/omen.tscn" id="7_sfsbp"]
 [ext_resource type="PackedScene" uid="uid://b5i3fykbust0s" path="res://scenes/ui/progress_health_bar_gradient.tscn" id="8_1ie2l"]
 [ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="10_kpmjy"]
 [ext_resource type="PackedScene" uid="uid://cbi7v731b1tpy" path="res://scenes/ui/damage_indicator.tscn" id="12_div4b"]
@@ -215,6 +216,8 @@ metadata/_custom_type_script = "uid://bxcm4afx5th3e"
 [node name="WallOfSound" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
 [node name="WallOfSound2" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
+[node name="Omen" parent="Piles/Deck" instance=ExtResource("7_sfsbp")]
 
 [node name="Metalbass4" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 

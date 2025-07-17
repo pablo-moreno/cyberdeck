@@ -29,7 +29,7 @@ signal change_max_health(new_max_health: int)
 signal damaged(amount: int)
 
 ## Emitted after healing
-signal healed
+signal healed(amount: int)
 #endregion
 
 func _ready():
@@ -72,9 +72,11 @@ func heal(amount: int) -> void:
         - change_health
         - healed
     """
+    var initial_health = health
+    
     health = min(health + amount, current_max_health)
     change_health.emit(health)
-    healed.emit()
+    healed.emit(health - initial_health)
 
 
 func add_shield(amount: int) -> void:

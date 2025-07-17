@@ -1,5 +1,4 @@
-class_name ExtraEnergyTrait
-extends Trait
+class_name ExtraEnergyTrait extends Trait
 
 
 func apply(target: Character):

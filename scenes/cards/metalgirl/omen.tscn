@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1yuj5jbg1tdx"]
+
+[ext_resource type="Script" uid="uid://puqwp8rgy347" path="res://scripts/cards/effects/heal_effect.gd" id="1_tmupy"]
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_u2gka"]
+[ext_resource type="Script" uid="uid://dl2ovw7kpojh3" path="res://scripts/cards/effects/shield_effect.gd" id="2_u2gka"]
+
+[node name="Omen" type="Node"]
+script = ExtResource("1_u2gka")
+card_name = "Omen"
+energy = 2
+type = 1
+target_type = 2
+animation_name = "shield"
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="HealEffect" type="Node" parent="."]
+script = ExtResource("1_tmupy")
+base_healing = 3
+metadata/_custom_type_script = "uid://puqwp8rgy347"
+
+[node name="ShieldEffect" type="Node" parent="."]
+script = ExtResource("2_u2gka")
+base_shield = 3
+metadata/_custom_type_script = "uid://dl2ovw7kpojh3"
