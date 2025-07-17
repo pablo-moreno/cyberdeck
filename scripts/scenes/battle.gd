@@ -12,6 +12,7 @@ extends Node2D
 @onready var enemies_parent: Node = $Enemies
 @onready var victory_ui: VictoryUI = $VictoryUI
 
+@onready var end_turn_button: Button = $UI/EndTurnButton
 
 const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
@@ -48,7 +49,7 @@ func _on_round_started():
 
 
 func _on_round_ended():
-    pass
+    end_turn_button.disabled = false
 
 
 func _on_no_enemies_left():
@@ -61,6 +62,7 @@ func _on_turn_manager_turn_ended(character: Character) -> void:
 
 func _on_turn_manager_turn_start(character: Character) -> void:
     player.start_turn()
+    
 
 
 func _on_player_ended_player_turn() -> void:
@@ -69,6 +71,7 @@ func _on_player_ended_player_turn() -> void:
 
 func _on_end_turn_pressed() -> void:
     turn_manager.player_turn_ended.emit()
+    end_turn_button.disabled = true
 
 
 func _on_card_discarded(_card: Card):

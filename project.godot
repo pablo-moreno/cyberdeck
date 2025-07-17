@@ -36,6 +36,10 @@ click={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://scripts/cards/effects/attack_effect.gd", "res://scripts/cards/effects/card_effect.gd", "res://scripts/cards/effects/remove_enemy_shield_effect.gd", "res://scripts/cards/effects/shield_effect.gd")
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

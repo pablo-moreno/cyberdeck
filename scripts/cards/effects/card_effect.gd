@@ -9,5 +9,5 @@ func apply(card: Card, origin: Character, targets: Array[Variant]):
     pass
 
 
-func get_description():
-    return tr('Attack')
+func get_description() -> String:
+    return tr('')

@@ -1,0 +1,23 @@
+# LANGUAGE translation for cyberdeck for the following files:
+# res://scripts/cards/effects/attack_effect.gd
+# res://scripts/cards/effects/card_effect.gd
+# res://scripts/cards/effects/remove_enemy_shield_effect.gd
+# res://scripts/cards/effects/shield_effect.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cyberdeck\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: scripts/cards/effects/card_effect.gd
+msgid ""
+msgstr ""
+
+#: scripts/cards/effects/remove_enemy_shield_effect.gd
+msgid "Elimina el escudo"
+msgstr ""

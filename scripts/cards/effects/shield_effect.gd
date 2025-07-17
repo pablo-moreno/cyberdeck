@@ -6,5 +6,5 @@ class_name ShieldEffect extends CardEffect
 func apply(card: Card, origin: Character, targets: Array[Variant]):
     origin.health.add_shield(base_shield)
 
-func get_description():
+func get_description() -> String:
     return tr("Añade %s de escudo" % base_shield)

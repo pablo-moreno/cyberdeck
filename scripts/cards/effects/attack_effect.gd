@@ -14,5 +14,5 @@ func apply(card: Card, origin: Character, targets: Array[Variant]):
         var damage = get_damage_to_apply(card, origin, target)
         target.health.take_damage(damage)
 
-func get_description():
+func get_description() -> String:
     return tr("Hace %s de daño" % base_damage)

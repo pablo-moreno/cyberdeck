@@ -408,5 +408,6 @@ scale = Vector2(1.96862, 2.50813)
 script = ExtResource("7_jt03m")
 
 [node name="DamageIndicator" parent="." instance=ExtResource("8_n7575")]
+visible = false
 offset_top = 1.0
 offset_bottom = 1.0

@@ -15,29 +15,37 @@ gradient = SubResource("Gradient_m1d47")
 [sub_resource type="Gradient" id="Gradient_nuk2n"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.0747294, 0.684503, 0.248648, 1)
+colors = PackedColorArray(0.983496, 0.194888, 0.531425, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_y762u"]
 gradient = SubResource("Gradient_nuk2n")
 
 [node name="TextureProgressBar" type="TextureProgressBar"]
-offset_right = 256.0
-offset_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -373.0
+offset_top = -186.0
+offset_right = -117.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.52, 11.88)
-value = 76.0
+size_flags_horizontal = 4
+value = 100.0
 texture_under = SubResource("GradientTexture1D_laqga")
 texture_progress = SubResource("GradientTexture1D_y762u")
 script = ExtResource("1_laqga")
 metadata/_custom_type_script = "uid://cpqf0hrf0rllp"
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-31.2038, 0.360991)
 scale = Vector2(4.43867, 0.177272)
 texture = ExtResource("2_6my8s")
 
 [node name="ShieldLabel" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_left = -67.2082
 offset_top = -0.631735
@@ -48,3 +56,13 @@ theme = ExtResource("3_movrr")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -0.16835
+offset_right = 166.0
+offset_bottom = 31.8316
+scale = Vector2(0.719609, 0.0335416)
+theme = ExtResource("3_movrr")
+text = "99/99"
