@@ -45,6 +45,7 @@ func _ready() -> void:
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
     sprite.play('idle')
     damage_indicator.visible = true
+    sprite.animation_finished.connect(_on_animation_finished)
 
 
 #region Card handling
@@ -170,4 +171,9 @@ func _on_dropable_area_dragging_over() -> void:
 
 func _on_dropable_area_not_dragging() -> void:
     sprite.modulate = Color(Color.WHITE, 1)
+
+
+func _on_animation_finished():
+    sprite.play('idle')
+
 #endregion

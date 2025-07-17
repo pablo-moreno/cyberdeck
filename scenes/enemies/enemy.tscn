@@ -217,7 +217,7 @@ metadata/_custom_type_script = "uid://byjr4llf3v7rs"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nb6gf")
-animation = &"damaged"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

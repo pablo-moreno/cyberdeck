@@ -13,6 +13,7 @@ enum CARD_TYPE {
 
 @export var type: CARD_TYPE = CARD_TYPE.BASE
 @export var target_type: GlobalSignals.TargetType = GlobalSignals.TargetType.ENEMY
+@export var animation_name: String = 'attack'
 
 const SIZE: Vector2 = Vector2(48, 64)
 
@@ -51,6 +52,7 @@ func play(targets: Array[Variant]) -> bool:
         cannot_play_card.emit(self)
         return false
 
+    _player.sprite.play(animation_name)
     _player.spend_energy(energy)
 
     for effect in get_effects():

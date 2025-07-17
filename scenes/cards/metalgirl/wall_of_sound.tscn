@@ -8,6 +8,7 @@ script = ExtResource("1_cco6u")
 card_name = "Muro de ruido"
 energy = 1
 target_type = 2
+animation_name = "shield"
 metadata/_custom_type_script = "uid://2k4h1j2357l6"
 
 [node name="ShieldEffect" type="Node" parent="."]
