@@ -180,3 +180,4 @@ target_type = 2
 metadata/_custom_type_script = "uid://cw68u1tj5oj6p"
 
 [node name="DamageIndicator" parent="." instance=ExtResource("12_div4b")]
+visible = false

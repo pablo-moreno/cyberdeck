@@ -11,6 +11,7 @@ signal death(enemy: Enemy)
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dropable_card_area: DropableCardArea = $DropableArea
 @onready var health_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var damage_indicator: DamageIndicator = $DamageIndicator
 
 @export var modulate_color: Color = Color(1.0, 0.512, 0.433)
 
@@ -34,6 +35,7 @@ func _ready() -> void:
     sprite.animation_finished.connect(_on_animation_finished)
     sprite.play('idle')
     is_active = false
+    damage_indicator.visible = true
 
 
 func set_player(player: Character):

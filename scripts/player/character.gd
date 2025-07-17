@@ -10,6 +10,7 @@ class_name Character extends CharacterBody2D
 @onready var traits: Node = $Traits
 @onready var health: Health = $Health
 @onready var dropable_card_area: DropableCardArea = $DropableCardArea
+@onready var damage_indicator: DamageIndicator = $DamageIndicator
 #endregion
 
 #region Exported variables
@@ -43,6 +44,7 @@ func _ready() -> void:
     dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
     sprite.play('idle')
+    damage_indicator.visible = true
 
 
 #region Card handling

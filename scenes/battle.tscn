@@ -21,6 +21,7 @@ point_count = 2
 script = ExtResource("1_lpir7")
 
 [node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.756196, 0.445406, 0.859882, 1)
 position = Vector2(320, -180)
 scale = Vector2(2, 2)
 texture = ExtResource("1_dn72j")
@@ -147,13 +148,13 @@ horizontal_alignment = 1
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Punky1" parent="Enemies" instance=ExtResource("4_4k1nj")]
+[node name="Cyborg" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(387, -195)
 
-[node name="Punky2" parent="Enemies" instance=ExtResource("4_4k1nj")]
+[node name="Cyborg2" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(488, -186)
 
-[node name="Punky3" parent="Enemies" instance=ExtResource("4_4k1nj")]
+[node name="Cyborg3" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(577, -198)
 
 [node name="VictoryUI" type="Container" parent="."]

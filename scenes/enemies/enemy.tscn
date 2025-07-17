@@ -217,9 +217,7 @@ metadata/_custom_type_script = "uid://byjr4llf3v7rs"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nb6gf")
-animation = &"dead"
-frame = 6
-frame_progress = 1.0
+animation = &"damaged"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -259,7 +257,7 @@ offset_bottom = 61.0
 scale = Vector2(0.33, 7.54)
 
 [node name="IntentionSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -62)
+position = Vector2(0, -43)
 
 [node name="DropableArea" type="Control" parent="."]
 layout_mode = 3
@@ -272,5 +270,6 @@ scale = Vector2(1.96862, 2.50813)
 script = ExtResource("7_jt03m")
 
 [node name="DamageIndicator" parent="." instance=ExtResource("8_n7575")]
+visible = false
 offset_top = 1.0
 offset_bottom = 1.0
