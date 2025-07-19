@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://puqwp8rgy347" path="res://scripts/cards/effects/heal_effect.gd" id="1_tmupy"]
 [ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_u2gka"]
-[ext_resource type="AudioStream" uid="uid://boy5ekgapntjj" path="res://assets/soundeffects/health-pickup-6860.mp3" id="2_phndu"]
+[ext_resource type="AudioStream" uid="uid://boy5ekgapntjj" path="res://assets/soundeffects/healing/health-pickup-6860.mp3" id="2_phndu"]
 [ext_resource type="Script" uid="uid://dl2ovw7kpojh3" path="res://scripts/cards/effects/shield_effect.gd" id="2_u2gka"]
 
 [node name="Omen" type="Node"]

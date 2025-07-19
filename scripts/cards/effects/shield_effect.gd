@@ -3,7 +3,7 @@ class_name ShieldEffect extends CardEffect
 @export var base_shield: int = 6
 
 
-func apply(card: Card, origin: Character, targets: Array[Variant]):
+func apply(_card: Card, origin: Character, _targets: Array[Variant]):
     origin.health.add_shield(base_shield)
 
 func get_description() -> String:

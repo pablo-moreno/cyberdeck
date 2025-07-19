@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc6r60kvwachl" path="res://scripts/enemies/actions/shield.gd" id="1_nksl6"]
 [ext_resource type="Texture2D" uid="uid://grsp858lla2m" path="res://sprites/icons/shield.png" id="2_nksl6"]
-[ext_resource type="AudioStream" uid="uid://boy5ekgapntjj" path="res://assets/soundeffects/health-pickup-6860.mp3" id="3_xoekx"]
+[ext_resource type="AudioStream" uid="uid://boy5ekgapntjj" path="res://assets/soundeffects/healing/health-pickup-6860.mp3" id="3_xoekx"]
 
 [node name="ShieldAction" type="Control"]
 physics_interpolation_mode = 0

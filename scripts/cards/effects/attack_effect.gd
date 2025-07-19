@@ -4,7 +4,7 @@ class_name AttackEffect extends CardEffect
 @export var base_damage: int = 6
 
 
-func get_damage_to_apply(card: Card, origin: Character, target: Enemy) -> int:
+func get_damage_to_apply(_card: Card, _origin: Character, _target: Enemy) -> int:
     var multiplier = 1
     return base_damage * multiplier
 

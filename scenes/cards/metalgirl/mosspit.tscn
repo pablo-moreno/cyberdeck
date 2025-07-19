@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbm1nd6yphkxl"]
 
 [ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_w4d46"]
-[ext_resource type="AudioStream" uid="uid://0hn110nb8eol" path="res://assets/soundeffects/sci-fi-weapon-shoot-firing-pulse-dn-01-233835.mp3" id="2_f8m6e"]
+[ext_resource type="AudioStream" uid="uid://0hn110nb8eol" path="res://assets/soundeffects/attacks/sci-fi-weapon-shoot-firing-pulse-dn-01-233835.mp3" id="2_f8m6e"]
 [ext_resource type="Script" uid="uid://d0w2vuqfcgvk4" path="res://scripts/cards/effects/remove_enemy_shield_effect.gd" id="2_fwt4q"]
 [ext_resource type="Script" uid="uid://b5vi6tkuxmwiy" path="res://scripts/cards/effects/attack_effect.gd" id="3_f8m6e"]
 

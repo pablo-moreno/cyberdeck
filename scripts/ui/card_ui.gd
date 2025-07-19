@@ -36,12 +36,12 @@ func remove_card(card: Card):
         return
 
     _card = null
-    GlobalSignals.remove_from_hand.emit(self)
+    Globals.remove_from_hand.emit(self)
 
 
 func _attach_signals():
-    GlobalSignals.discard_card.connect(remove_card)
-    GlobalSignals.exhaust_card.connect(remove_card)
+    Globals.discard_card.connect(remove_card)
+    Globals.exhaust_card.connect(remove_card)
 
 
 func render_card():

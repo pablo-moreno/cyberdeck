@@ -4,7 +4,7 @@ signal dragging_over
 signal not_dragging
 
 
-@export var target_type: GlobalSignals.TargetType = GlobalSignals.TargetType.ENEMY
+@export var target_type: Globals.TargetType = Globals.TargetType.ENEMY
 
 
 func _ready() -> void:

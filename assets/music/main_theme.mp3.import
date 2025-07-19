@@ -14,6 +14,6 @@ dest_files=["res://.godot/imported/main_theme.mp3-0d33422c36c5ad93fc1d7fd44500e5
 
 loop=true
 loop_offset=0
-bpm=0
+bpm=120.0
 beat_count=0
-bar_beats=4
+bar_beats=32

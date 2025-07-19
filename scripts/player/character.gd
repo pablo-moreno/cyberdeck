@@ -39,8 +39,8 @@ signal dead
 func _ready() -> void:
     move_cards_to_draw()
     health.death.connect(_on_death)
-    GlobalSignals.discard_card.connect(discard_card)
-    GlobalSignals.exhaust_card.connect(exhaust_card)
+    Globals.discard_card.connect(discard_card)
+    Globals.exhaust_card.connect(exhaust_card)
     started_player_turn.connect(start_turn)
     dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
@@ -68,7 +68,7 @@ func draw_cards(amount: int = 5):
 
     for _card in _cards:
         _card.move_to(hand)
-        GlobalSignals.drawn_card.emit(_card)
+        Globals.drawn_card.emit(_card)
 
     if _drawed_cards == amount:
         return
@@ -84,7 +84,7 @@ func draw_cards(amount: int = 5):
     for _card in _cards:
         if _card is Card:
             _card.move_to(hand)
-            GlobalSignals.drawn_card.emit(_card)
+            Globals.drawn_card.emit(_card)
 
 
 func draw_round_cards():
@@ -95,7 +95,7 @@ func discard_all_hand():
     var cards = hand.get_all_cards()
 
     for card in cards:
-        GlobalSignals.discard_card.emit(card)
+        Globals.discard_card.emit(card)
 
 
 func discard_card(card: Card):
@@ -107,6 +107,7 @@ func exhaust_card(card: Card):
 
 #endregion
 
+#region Sound
 func play_sound_effect(stream: AudioStreamMP3):
     if stream == null:
         return
@@ -114,6 +115,7 @@ func play_sound_effect(stream: AudioStreamMP3):
     audio_stream_player.pitch_scale = randf_range(0.9, 1.1)
     audio_stream_player.stream = stream
     audio_stream_player.play()
+#endregion
 
 #region Turn management
 func end_turn():
@@ -125,7 +127,7 @@ func start_turn():
     draw_round_cards()
     reset_energy()
     health.reset_shield()
-    GlobalSignals.set_energy_remaining(current_energy)
+    Globals.set_energy_remaining(current_energy)
 
 
 func apply_effects():
@@ -136,8 +138,9 @@ func apply_effects():
             continue
 
         _trait.apply(self)
+#endregion
 
-
+#region Energy
 func set_max_energy(amount):
     max_energy = amount
 
@@ -150,7 +153,6 @@ func reset_energy():
 func spend_energy(amount: int):
     current_energy -= amount
     current_energy_changed.emit(current_energy)
-    
 #endregion
 
 #region Signal events

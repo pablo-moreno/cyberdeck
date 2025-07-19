@@ -42,12 +42,12 @@ func _on_health_change_max_health(new_max_health: int):
     _change_label_value(_health.health, _health.current_max_health)
 
 
-func _on_health_changed_current_shield(value: int):
-    if value > 0:
+func _on_health_changed_current_shield(shield: int):
+    if shield > 0:
         shield_label.visible = true
         shield_sprite.visible = true
     else:
         shield_label.visible = false
         shield_sprite.visible = false
         
-    shield_label.text = str(value)
+    shield_label.text = str(shield)

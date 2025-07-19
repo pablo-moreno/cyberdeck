@@ -19,9 +19,9 @@ func get_cards(amount: int = 1) -> Array[Node]:
 
 
 func get_all_cards(randomized: bool = true) -> Array[Node]:
-    var _cards := get_children()
+    var _all_cards := get_children()
     
     if randomized:
-        _cards.shuffle()
+        _all_cards.shuffle()
         
-    return _cards
+    return _all_cards

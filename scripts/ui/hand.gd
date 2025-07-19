@@ -13,8 +13,8 @@ const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
 
 func _ready() -> void:
-    GlobalSignals.remove_from_hand.connect(_on_remove_from_hand)
-    GlobalSignals.drawn_card.connect(_on_drawn_card)
+    Globals.remove_from_hand.connect(_on_remove_from_hand)
+    Globals.drawn_card.connect(_on_drawn_card)
 
 
 func draw(new_card: CardUI) -> void:
@@ -56,6 +56,12 @@ func _on_drawn_card(card: Card):
 
 func _on_remove_from_hand(card: CardUI) -> void:
     if get_child_count() < 1:
+        return
+
+    var parent := card.get_parent()
+
+    if parent == null:
+        print('No se ha podido reemparentar la carta %s' % card._card.get_card_name())
         return
 
     card.reparent(get_tree().root)

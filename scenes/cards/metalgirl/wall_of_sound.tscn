@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bc6g2f7p8cr24"]
 
 [ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_cco6u"]
-[ext_resource type="AudioStream" uid="uid://76w1hbjrt1bo" path="res://assets/soundeffects/bass-ui-298402.mp3" id="2_1viui"]
+[ext_resource type="AudioStream" uid="uid://76w1hbjrt1bo" path="res://assets/soundeffects/attacks/bass-ui-298402.mp3" id="2_1viui"]
 [ext_resource type="Script" uid="uid://dl2ovw7kpojh3" path="res://scripts/cards/effects/shield_effect.gd" id="2_r7ile"]
 
 [node name="SoundWall" type="Node"]

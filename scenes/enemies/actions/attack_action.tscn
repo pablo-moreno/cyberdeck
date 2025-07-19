@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8pawektchcb6" path="res://scripts/enemies/actions/attack.gd" id="1_37dht"]
 [ext_resource type="Texture2D" uid="uid://bkl2s5cdlurwv" path="res://sprites/icons/damage.png" id="2_dilif"]
-[ext_resource type="AudioStream" uid="uid://1tfe3w8y4ci5" path="res://assets/soundeffects/sci-fi-weapon-shoot-firing-plasma-pp-05-233829.mp3" id="3_k2q8g"]
+[ext_resource type="AudioStream" uid="uid://1tfe3w8y4ci5" path="res://assets/soundeffects/attacks/sci-fi-weapon-shoot-firing-plasma-pp-05-233829.mp3" id="3_k2q8g"]
 
 [node name="AttackAction" type="Control"]
 physics_interpolation_mode = 0

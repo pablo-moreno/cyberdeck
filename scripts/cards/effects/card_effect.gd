@@ -5,7 +5,7 @@ func _ready() -> void:
     pass
 
 
-func apply(card: Card, origin: Character, targets: Array[Variant]):
+func apply(_card: Card, _origin: Character, _targets: Array[Variant]):
     pass
 
 

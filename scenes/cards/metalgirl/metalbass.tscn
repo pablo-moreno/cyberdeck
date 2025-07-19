@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://uf8n081rxxwe"]
 
 [ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_fa4yn"]
-[ext_resource type="AudioStream" uid="uid://dy7fqyo0a4pb2" path="res://assets/soundeffects/sci-fi-weapon-shoot-firing-plasma-pp-01-233828.mp3" id="2_tjivt"]
+[ext_resource type="AudioStream" uid="uid://dy7fqyo0a4pb2" path="res://assets/soundeffects/attacks/sci-fi-weapon-shoot-firing-plasma-pp-01-233828.mp3" id="2_tjivt"]
 [ext_resource type="Script" uid="uid://b5vi6tkuxmwiy" path="res://scripts/cards/effects/attack_effect.gd" id="3_7s3sq"]
 
 [node name="Card" type="Node"]

@@ -55,7 +55,7 @@ func _on_ended_player_turn():
     pass
 
 
-func _on_ended_enemy_turn(enemy: Enemy):
+func _on_ended_enemy_turn(_enemy: Enemy):
     var next_enemy = _get_next()
     
     if next_enemy != null:

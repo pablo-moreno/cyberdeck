@@ -1,10 +1,14 @@
 class_name Enemy extends CharacterBody2D
 
+#region Signals
 signal round_started
 signal turn_started
 signal turn_ended(enemy: Enemy)
 signal death(enemy: Enemy)
+signal animate_action(name: String)
+#endregion
 
+#region Nodes
 @onready var health: Health = $Health
 @onready var actions: Node = $Actions
 @onready var intention_sprite: Sprite2D = $IntentionSprite
@@ -13,19 +17,20 @@ signal death(enemy: Enemy)
 @onready var health_progress_bar: TextureProgressBar = $TextureProgressBar
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+#endregion
 
+#region Export variables
 @export var modulate_color: Color = Color(1.0, 0.512, 0.433)
+#endregion
 
-
-signal animate_action(name: String)
-
-
+#region Internal variables
 var _player: Character = null
 var _current_action_index: int = 0
 var is_dead: bool = false
 var is_active: bool = false
+#endregion
 
-
+#region Internal functions
 func _ready() -> void:
     turn_started.connect(play)
     round_started.connect(_on_round_started)
@@ -88,8 +93,9 @@ func _end_turn():
         sprite.animation_finished.disconnect(_end_turn)
 
     turn_ended.emit(self)
+#endregion
 
-
+#region Attached signals
 func _on_dead():
     health_progress_bar.visible = false
     intention_sprite.visible = false
@@ -126,3 +132,5 @@ func _on_animation_finished():
 
 func _emit_death():
     death.emit(self)
+
+#endregion

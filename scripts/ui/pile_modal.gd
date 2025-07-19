@@ -29,7 +29,6 @@ func update():
 
     for card in cards:
         var card_ui: CardUI = CARD_UI.instantiate()
-        print(card.get_card_name())
         card_ui.set_card(card)
         card_ui.set_not_draggable()
         card_ui.read_only = true

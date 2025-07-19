@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalSignals="*res://scripts/common/globals.gd"
+Globals="*res://scripts/common/globals.gd"
+SceneTransition="*res://scripts/ui/scene_transition.gd"
 
 [display]
 

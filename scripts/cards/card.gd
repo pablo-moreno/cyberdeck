@@ -12,7 +12,7 @@ enum CARD_TYPE {
 @export_range(0, 9) var energy: int = 3
 
 @export var type: CARD_TYPE = CARD_TYPE.BASE
-@export var target_type: GlobalSignals.TargetType = GlobalSignals.TargetType.ENEMY
+@export var target_type: Globals.TargetType = Globals.TargetType.ENEMY
 @export var animation_name: String = 'attack'
 @export var sound_effect: AudioStreamMP3 = null
 
@@ -34,7 +34,7 @@ func set_player(player: Character):
 
 
 func discard():
-    GlobalSignals.discard_card.emit(self)
+    Globals.discard_card.emit(self)
 
 
 func get_effects() -> Array[CardEffect]:
@@ -61,16 +61,16 @@ func play(targets: Array[Variant]) -> bool:
         effect.apply(self, _player, targets)
     
     if is_exhaust:
-        GlobalSignals.exhaust_card.emit(self)
+        Globals.exhaust_card.emit(self)
     else:
-        GlobalSignals.discard_card.emit(self)
+        Globals.discard_card.emit(self)
     
     return is_exhaust
 
 
 func move_to(target: Pile):
     reparent(target)        
-    GlobalSignals.card_changed_pile.emit(self, target)
+    Globals.card_changed_pile.emit(self, target)
 
 
 func get_card_name():
