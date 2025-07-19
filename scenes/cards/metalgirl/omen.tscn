@@ -6,7 +6,7 @@
 
 [node name="Omen" type="Node"]
 script = ExtResource("1_u2gka")
-card_name = "Omen"
+card_name = "Presagio"
 energy = 2
 type = 1
 target_type = 2

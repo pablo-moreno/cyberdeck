@@ -3,23 +3,23 @@ class_name CardUI extends Draggable
 
 @export var _card: Card = null
 @export_range(1.0, 1.5) var hover_transform = 1.25
-@export_range(0, 24) var hover_up_pixels = 12
+@export_range(0, 24) var hover_up_pixels = 4
+@export var read_only: bool = false
+
+@export var base_texture: Texture2D = null
+@export var purple_texture: Texture2D = null
+@export var gold_texture: Texture2D = null
 
 @onready var ui: Control = $UI
-@onready var base_sprite: Sprite2D = $UI/BaseCard
-@onready var purple_sprite: Sprite2D = $UI/PurpleCard
-@onready var gold_sprite: Sprite2D = $UI/GoldCard
-
-@onready var title: Label = $UI/TitleLabel
-@onready var description: Label = $UI/DescriptionLabel
+@onready var title_label: Label = $UI/MarginContainer/VBoxContainer/TitleLabel
+@onready var description_label: Label = $UI/MarginContainer/VBoxContainer/DescriptionLabel
 @onready var energy: Label = $UI/EnergyLabel
+@onready var card_texture: TextureRect = $CardTexture
 
 
 func _ready() -> void:
     render_card()
-    title.text = _card.card_name
-    description.text = _card.get_description()
-    energy.text = str(_card.energy)
+
     dragging.connect(_on_dragging)
 
 
@@ -46,21 +46,22 @@ func _attach_signals():
 
 
 func render_card():
+    if read_only:
+        mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
     if not _card:
         return
 
+    title_label.text = _card.card_name
+    description_label.text = _card.get_description()
+    energy.text = str(_card.energy)
+
     if _card.type == Card.CARD_TYPE.BASE:
-        base_sprite.visible = true
-        purple_sprite.visible = false
-        gold_sprite.visible = false
+        card_texture.texture = base_texture
     elif _card.type == Card.CARD_TYPE.PURPLE:
-        base_sprite.visible = false
-        purple_sprite.visible = true
-        gold_sprite.visible = false
+        card_texture.texture = purple_texture
     elif _card.type == Card.CARD_TYPE.GOLD:
-        base_sprite.visible = false
-        purple_sprite.visible = false
-        gold_sprite.visible = true
+        card_texture.texture = gold_texture
 
 
 func _on_mouse_entered() -> void:

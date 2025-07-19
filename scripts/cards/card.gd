@@ -72,7 +72,7 @@ func move_to(target: Pile):
 
 
 func get_card_name():
-    return tr(name)
+    return tr(card_name)
 
 
 func get_description():

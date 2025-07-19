@@ -14,8 +14,14 @@ func _ready() -> void:
 
 func get_cards(amount: int = 1) -> Array[Node]:
     var _card_nodes = get_children()
+    _card_nodes.shuffle()
     return _card_nodes.slice(0, amount)
 
 
-func get_all_cards() -> Array[Node]:
-    return get_children()
+func get_all_cards(randomized: bool = true) -> Array[Node]:
+    var _cards := get_children()
+    
+    if randomized:
+        _cards.shuffle()
+        
+    return _cards

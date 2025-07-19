@@ -1,7 +1,19 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cfos3mcmwvlb3"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cfos3mcmwvlb3"]
 
 [ext_resource type="FontFile" uid="uid://cfysj8xf7emfh" path="res://assets/fonts/PixelOperator.ttf" id="1_1h68f"]
+[ext_resource type="Texture2D" uid="uid://c8vmbrgtjvq86" path="res://sprites/textures/pile_modal_texture.png" id="1_oryc4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgv31"]
+texture = ExtResource("1_oryc4")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
 
 [resource]
 default_font = ExtResource("1_1h68f")
 default_font_size = 32
+CardUI/base_type = &"Panel"
+CardUI/icons/panel = null
+PilePanelContainer/base_type = &"PanelContainer"
+PilePanelContainer/styles/panel = SubResource("StyleBoxTexture_kgv31")

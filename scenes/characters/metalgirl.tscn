@@ -229,6 +229,54 @@ metadata/_custom_type_script = "uid://bxcm4afx5th3e"
 
 [node name="WallOfSound3" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
+[node name="Mosspit2" parent="Piles/Deck" instance=ExtResource("4_bc2xx")]
+
+[node name="Metalbass8" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass9" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass10" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="WallOfSound4" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
+[node name="WallOfSound5" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
+[node name="Omen2" parent="Piles/Deck" instance=ExtResource("7_sfsbp")]
+
+[node name="Metalbass11" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass12" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass13" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass14" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="WallOfSound6" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
+[node name="Mosspit3" parent="Piles/Deck" instance=ExtResource("4_bc2xx")]
+
+[node name="Metalbass15" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass16" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass17" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="WallOfSound7" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
+[node name="WallOfSound8" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
+[node name="Omen3" parent="Piles/Deck" instance=ExtResource("7_sfsbp")]
+
+[node name="Metalbass18" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass19" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass20" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="Metalbass21" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+
+[node name="WallOfSound9" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
+
 [node name="Draw" type="Node" parent="Piles"]
 script = ExtResource("3_ppwyf")
 metadata/_custom_type_script = "uid://bxcm4afx5th3e"

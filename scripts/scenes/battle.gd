@@ -14,6 +14,9 @@ extends Node2D
 
 @onready var end_turn_button: Button = $UI/EndTurnButton
 
+@onready var pile_modal_animation_player: AnimationPlayer = $PileModalAnimationPlayer
+@onready var pile_modal: PileModal = $UI/PileModal
+
 const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
 
@@ -35,13 +38,6 @@ func _setup():
 
     turn_manager.init()
 
-
-func _on_draw_button_pressed() -> void:
-    player.draw_cards(player.cards_to_draw)
-
-
-func _on_discard_button_pressed() -> void:
-    pass # Replace with function body.
 
 
 func _on_round_started():
@@ -94,3 +90,21 @@ func _on_player_max_energy_changed(value: int) -> void:
 
 func _on_player_dead() -> void:
     victory_ui.set_defeat()
+
+
+func _on_discard_button_pressed() -> void:
+    pile_modal.pile_ref = player.discard_pile
+    pile_modal.pile_name = tr('Discard')
+    pile_modal.update()
+    pile_modal_animation_player.play("display")
+
+
+func _on_pile_modal_close() -> void:
+    pile_modal_animation_player.play("hide")
+
+
+func _on_draw_button_pressed() -> void:
+    pile_modal.pile_ref = player.draw_pile
+    pile_modal.pile_name = tr('Draw')
+    pile_modal.update()
+    pile_modal_animation_player.play("display")

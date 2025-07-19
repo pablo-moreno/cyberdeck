@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm3svvsygos3u"]
+
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_r6io7"]
+[ext_resource type="Script" uid="uid://br8u3ugaugy5m" path="res://scripts/cards/effects/draw_card_effect.gd" id="2_hn1a0"]
+
+[node name="Shortcut" type="Node"]
+script = ExtResource("1_r6io7")
+card_name = "Atajo"
+is_exhaust = true
+target_type = 2
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="DrawCardEffect" type="Node" parent="."]
+script = ExtResource("2_hn1a0")
+amount_to_draw = 3
+metadata/_custom_type_script = "uid://br8u3ugaugy5m"
