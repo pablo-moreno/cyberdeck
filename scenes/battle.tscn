@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nxejjx6lux6y"]
+[gd_scene load_steps=19 format=3 uid="uid://nxejjx6lux6y"]
 
 [ext_resource type="Texture2D" uid="uid://vmu6jsjd5oew" path="res://sprites/backgrounds/street.png" id="1_dn72j"]
 [ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/scenes/battle.gd" id="1_lpir7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cpgoi3e6xint2" path="res://textures/circle_texture.tres" id="9_03edq"]
 [ext_resource type="Script" uid="uid://bhvkutujnevhv" path="res://scripts/ui/victory.gd" id="9_yahae"]
 [ext_resource type="PackedScene" uid="uid://dxtawmj1md4fp" path="res://scenes/ui/pile_modal.tscn" id="12_03edq"]
+[ext_resource type="AudioStream" uid="uid://c348xeg1beh4l" path="res://assets/music/main_theme.mp3" id="13_22uqi"]
 
 [sub_resource type="Animation" id="Animation_6ni85"]
 length = 0.001
@@ -257,6 +258,11 @@ offset_right = 140.623
 offset_bottom = 41.8938
 scale = Vector2(0.219441, 0.525209)
 text = "has ganado"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_22uqi")
+autoplay = true
+playback_type = 1
 
 [connection signal="current_energy_changed" from="Player" to="." method="_on_player_current_energy_changed"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
