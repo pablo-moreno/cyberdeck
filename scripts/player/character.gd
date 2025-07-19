@@ -11,6 +11,7 @@ class_name Character extends CharacterBody2D
 @onready var health: Health = $Health
 @onready var dropable_card_area: DropableCardArea = $DropableCardArea
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 #endregion
 
 #region Exported variables
@@ -104,23 +105,15 @@ func discard_card(card: Card):
 func exhaust_card(card: Card):
     card.move_to(exhaust_pile)
 
-
-func play_card(card: Card, targets: Array[Enemy]):
-    if card.energy > current_energy:
-        cannot_play_card.emit()
-        return
-    
-    var is_exhaust = card.play(targets)
-
-    if is_exhaust:
-        GlobalSignals.exhaust_card.emit(card)
-    else:
-        GlobalSignals.discard_card.emit(card)
-    
-    current_energy -= card.energy
-    current_energy_changed.emit(current_energy)
-
 #endregion
+
+func play_sound_effect(stream: AudioStreamMP3):
+    if stream == null:
+        return
+
+    audio_stream_player.pitch_scale = randf_range(0.9, 1.1)
+    audio_stream_player.stream = stream
+    audio_stream_player.play()
 
 #region Turn management
 func end_turn():

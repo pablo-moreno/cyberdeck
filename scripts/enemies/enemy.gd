@@ -12,6 +12,7 @@ signal death(enemy: Enemy)
 @onready var dropable_card_area: DropableCardArea = $DropableArea
 @onready var health_progress_bar: TextureProgressBar = $TextureProgressBar
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var modulate_color: Color = Color(1.0, 0.512, 0.433)
 
@@ -46,6 +47,16 @@ func play():
     is_active = true
     health.reset_shield()
     _apply_next_action()
+
+
+func play_sound_effect(sound_effect: AudioStreamMP3):
+    if sound_effect == null:
+        return
+    
+    audio_stream_player.stream = sound_effect
+    audio_stream_player.pitch_scale = randf_range(0.90, 1.10)
+    audio_stream_player.play()
+
 
 func _get_next_action() -> Action:
     var action = actions.get_child(_current_action_index)

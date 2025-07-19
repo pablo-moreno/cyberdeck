@@ -196,17 +196,23 @@ horizontal_alignment = 1
 
 [node name="DiscardButton" type="Button" parent="UI"]
 offset_left = 581.0
-offset_top = -83.0
+offset_top = -88.0
 offset_right = 621.0
-offset_bottom = -43.0
+offset_bottom = -48.0
+mouse_default_cursor_shape = 2
+theme_override_colors/icon_hover_color = Color(0.907942, 0.907942, 0.907942, 1)
 icon = ExtResource("8_66ngm")
+flat = true
 
 [node name="DrawButton" type="Button" parent="UI"]
 offset_left = 22.0
 offset_top = -89.0
 offset_right = 62.0
 offset_bottom = -49.0
+mouse_default_cursor_shape = 2
+theme_override_colors/icon_hover_color = Color(0.838897, 0.838897, 0.838897, 1)
 icon = ExtResource("8_66ngm")
+flat = true
 
 [node name="PileModal" parent="UI" instance=ExtResource("12_03edq")]
 z_index = 1000

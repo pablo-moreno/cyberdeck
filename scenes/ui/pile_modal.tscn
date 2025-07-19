@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxtawmj1md4fp"]
+[gd_scene load_steps=3 format=3 uid="uid://dxtawmj1md4fp"]
 
-[ext_resource type="PackedScene" uid="uid://diaq53qbtc6s0" path="res://scenes/ui/card_ui.tscn" id="1_e4d0m"]
 [ext_resource type="Script" uid="uid://b0b2s28xd7e7x" path="res://scripts/ui/pile_modal.gd" id="1_jvc6c"]
 [ext_resource type="Script" uid="uid://x6xjylp2pxcb" path="res://scripts/ui/pile_panel_container.gd" id="2_jvc6c"]
 
@@ -49,6 +48,7 @@ horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PilePanelContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -57,16 +57,16 @@ theme_override_constants/margin_bottom = 8
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/PilePanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 8
-
-[node name="CardUI" parent="MarginContainer/PilePanelContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_e4d0m")]
-layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PilePanelContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="MarginContainer/PilePanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "cerrar"
 
 [connection signal="pressed" from="MarginContainer/PilePanelContainer/VBoxContainer/CenterContainer/CloseButton" to="." method="_on_close_button_pressed"]

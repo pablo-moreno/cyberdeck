@@ -94,7 +94,7 @@ func _on_player_dead() -> void:
 
 func _on_discard_button_pressed() -> void:
     pile_modal.pile_ref = player.discard_pile
-    pile_modal.pile_name = tr('Discard')
+    pile_modal.pile_name = tr('Descarte')
     pile_modal.update()
     pile_modal_animation_player.play("display")
 
@@ -105,6 +105,6 @@ func _on_pile_modal_close() -> void:
 
 func _on_draw_button_pressed() -> void:
     pile_modal.pile_ref = player.draw_pile
-    pile_modal.pile_name = tr('Draw')
+    pile_modal.pile_name = tr('Robo')
     pile_modal.update()
     pile_modal_animation_player.play("display")

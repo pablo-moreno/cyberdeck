@@ -273,3 +273,5 @@ script = ExtResource("7_jt03m")
 visible = false
 offset_top = 1.0
 offset_bottom = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

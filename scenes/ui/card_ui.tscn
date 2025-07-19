@@ -101,7 +101,6 @@ offset_top = -3.0
 offset_right = 52.0
 offset_bottom = 67.0
 mouse_filter = 1
-mouse_default_cursor_shape = 6
 color = Color(1, 1, 1, 0)
 
 [connection signal="gui_input" from="HoverRect" to="." method="_on_hover_rect_gui_input"]

@@ -14,11 +14,12 @@ enum CARD_TYPE {
 @export var type: CARD_TYPE = CARD_TYPE.BASE
 @export var target_type: GlobalSignals.TargetType = GlobalSignals.TargetType.ENEMY
 @export var animation_name: String = 'attack'
+@export var sound_effect: AudioStreamMP3 = null
+
 
 const SIZE: Vector2 = Vector2(48, 64)
 
 var _player: Character = null
-
 
 signal play_card(targets: Variant)
 signal cannot_play_card(card: Card)
@@ -54,6 +55,7 @@ func play(targets: Array[Variant]) -> bool:
 
     _player.sprite.play(animation_name)
     _player.spend_energy(energy)
+    _player.play_sound_effect(sound_effect)
 
     for effect in get_effects():
         effect.apply(self, _player, targets)

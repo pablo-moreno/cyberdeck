@@ -3,7 +3,7 @@ class_name CardUI extends Draggable
 
 @export var _card: Card = null
 @export_range(1.0, 1.5) var hover_transform = 1.25
-@export_range(0, 24) var hover_up_pixels = 4
+@export_range(0, 8) var hover_up_pixels = 4
 @export var read_only: bool = false
 
 @export var base_texture: Texture2D = null
@@ -19,7 +19,6 @@ class_name CardUI extends Draggable
 
 func _ready() -> void:
     render_card()
-
     dragging.connect(_on_dragging)
 
 
@@ -48,6 +47,8 @@ func _attach_signals():
 func render_card():
     if read_only:
         mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+    else:
+        mouse_default_cursor_shape = Control.CURSOR_DRAG
 
     if not _card:
         return
@@ -65,13 +66,21 @@ func render_card():
 
 
 func _on_mouse_entered() -> void:
-    position.y = position.y - hover_up_pixels
+    var up_pixels = hover_up_pixels
+    if not read_only:
+        up_pixels *= 3
+
+    position.y = position.y - up_pixels
     size = size * hover_transform
     z_index = 100
 
 
 func _on_mouse_exited() -> void:
-    position.y = position.y + hover_up_pixels
+    var up_pixels = hover_up_pixels
+    if not read_only:
+        up_pixels *= 3
+    
+    position.y = position.y + up_pixels
     size = size / hover_transform
     z_index = 0
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy6piolcgrput"]
+[gd_scene load_steps=4 format=3 uid="uid://dy6piolcgrput"]
 
 [ext_resource type="Script" uid="uid://bc6r60kvwachl" path="res://scripts/enemies/actions/shield.gd" id="1_nksl6"]
 [ext_resource type="Texture2D" uid="uid://grsp858lla2m" path="res://sprites/icons/shield.png" id="2_nksl6"]
+[ext_resource type="AudioStream" uid="uid://boy5ekgapntjj" path="res://assets/soundeffects/health-pickup-6860.mp3" id="3_xoekx"]
 
 [node name="ShieldAction" type="Control"]
 physics_interpolation_mode = 0
@@ -11,6 +12,7 @@ script = ExtResource("1_nksl6")
 type = 1
 texture = ExtResource("2_nksl6")
 animation_name = "shield"
+sound_effect = ExtResource("3_xoekx")
 metadata/_custom_type_script = "uid://bc6r60kvwachl"
 
 [node name="Icon" type="Sprite2D" parent="."]

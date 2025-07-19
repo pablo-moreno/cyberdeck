@@ -4,4 +4,5 @@ class_name ShieldAction extends Action
 
 
 func run(player: Character, enemy: Enemy):
+    super(player, enemy)
     enemy.health.add_shield(base_shield)
