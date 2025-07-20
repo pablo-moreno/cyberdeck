@@ -64,12 +64,19 @@ func play(targets: Array[Variant]) -> bool:
         Globals.exhaust_card.emit(self)
     else:
         Globals.discard_card.emit(self)
-    
+
     return is_exhaust
 
 
-func move_to(target: Pile):
-    reparent(target)        
+func move_to(target: Pile, copy: bool = false):
+    if copy:
+        var new_card = duplicate()
+        new_card.set_player(_player)
+        add_child(new_card)
+        new_card.reparent(target)
+    else:
+        reparent(target)
+
     Globals.card_changed_pile.emit(self, target)
 
 

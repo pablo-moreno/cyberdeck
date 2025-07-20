@@ -20,6 +20,7 @@ class_name Character extends CharacterBody2D
 @export var max_energy: int = 3
 @export var current_energy: int = 3
 @export var modulate_color: Color = Color(0.0, 0.863, 0.863)
+@export var keep_hand: bool = false
 #endregion
 
 #region Signals
@@ -59,7 +60,7 @@ func move_cards_to_draw():
     
     for card in cards:
         card.set_player(self)
-        card.move_to(draw_pile)
+        card.move_to(draw_pile, true)
 
 
 func draw_cards(amount: int = 5):
