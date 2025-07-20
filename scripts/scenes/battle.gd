@@ -65,7 +65,6 @@ func _on_end_turn_pressed() -> void:
 func _on_card_discarded(_card: Card):
     draw_counter.text = str(player.draw_pile.get_child_count())
     discard_counter.text = str(player.discard_pile.get_child_count())
-    hand.update_cards()
 
 func _on_drawn_card(_card: Card):
     draw_counter.text = str(player.draw_pile.get_child_count())
@@ -105,4 +104,4 @@ func _on_draw_button_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
-    hand.update_cards()
+    hand._update_cards()
