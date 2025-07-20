@@ -1,13 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2akvox0muifv"]
+[gd_scene load_steps=5 format=3 uid="uid://o2ia4jdrmi4b"]
 
 [ext_resource type="Script" uid="uid://dvbix0k5ah3wk" path="res://scripts/ui/scene_transition.gd" id="1_igxph"]
 
 [sub_resource type="Animation" id="Animation_ipp86"]
-resource_name = "RESET"
+resource_name = "dissolve"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dissolve:modulate")
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_igxph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -17,35 +33,18 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_igxph"]
-resource_name = "dissolve"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dissolve:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq3v3"]
 _data = {
-&"RESET": SubResource("Animation_ipp86"),
-&"dissolve": SubResource("Animation_igxph")
+&"RESET": SubResource("Animation_igxph"),
+&"dissolve": SubResource("Animation_ipp86")
 }
 
-[node name="SceneTransition" type="CanvasLayer"]
-script = ExtResource("1_igxph")
-
-[node name="Dissolve" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
+offset_top = -360.0
 offset_right = 640.0
-offset_bottom = 360.0
-color = Color(0.366453, 9.39272e-05, 0.36773, 1)
+mouse_filter = 2
+color = Color(0.313726, 0.231373, 0.345098, 1)
+script = ExtResource("1_igxph")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

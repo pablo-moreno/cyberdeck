@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nxejjx6lux6y"]
+[gd_scene load_steps=19 format=3 uid="uid://nxejjx6lux6y"]
 
 [ext_resource type="Texture2D" uid="uid://vmu6jsjd5oew" path="res://sprites/backgrounds/street.png" id="1_dn72j"]
 [ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/scenes/battle.gd" id="1_lpir7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bhvkutujnevhv" path="res://scripts/ui/victory.gd" id="9_yahae"]
 [ext_resource type="PackedScene" uid="uid://dxtawmj1md4fp" path="res://scenes/ui/pile_modal.tscn" id="12_03edq"]
 [ext_resource type="AudioStream" uid="uid://c348xeg1beh4l" path="res://assets/music/main_theme.mp3" id="13_22uqi"]
+[ext_resource type="PackedScene" uid="uid://o2ia4jdrmi4b" path="res://scenes/ui/scene_transition.tscn" id="14_6ni85"]
 
 [sub_resource type="Animation" id="Animation_6ni85"]
 length = 0.001
@@ -98,10 +99,10 @@ metadata/_custom_type_script = "uid://b56rnmt62xd1s"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Cyborg" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(387, -195)
+position = Vector2(365, -195)
 
 [node name="Cyborg2" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(488, -186)
+position = Vector2(476, -179)
 
 [node name="Cyborg3" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(577, -198)
@@ -216,6 +217,8 @@ offset_right = 632.0
 offset_bottom = 7.0
 scale = Vector2(0.619771, 0.702067)
 text = "REDRAW"
+
+[node name="SceneTransition" parent="UI" instance=ExtResource("14_6ni85")]
 
 [node name="Hand" parent="." instance=ExtResource("4_a12nh")]
 offset_left = 95.0

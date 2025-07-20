@@ -12,6 +12,7 @@ extends Node2D
 @onready var end_turn_button: Button = $UI/EndTurnButton
 @onready var pile_modal_animation_player: AnimationPlayer = $PileModalAnimationPlayer
 @onready var pile_modal: PileModal = $UI/PileModal
+@onready var scene_transition: SceneTransition = $UI/SceneTransition
 #endregion
 
 const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
@@ -25,6 +26,8 @@ func _ready() -> void:
     discard_counter.text = str(player.discard_pile.get_child_count())
     energy_ui.set_current_energy(player.current_energy)
     energy_ui.set_max_energy(player.max_energy)
+    scene_transition.visible = true
+    scene_transition.init_transition()
 
 
 func _setup():

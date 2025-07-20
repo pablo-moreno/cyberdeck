@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="cyberdeck"
-run/main_scene="uid://nxejjx6lux6y"
+run/main_scene="uid://bydyy1q7ntkmq"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://scripts/common/globals.gd"
-SceneTransition="*res://scripts/ui/scene_transition.gd"
 
 [display]
 

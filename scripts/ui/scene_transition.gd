@@ -1,12 +1,12 @@
-extends CanvasLayer
+class_name SceneTransition extends ColorRect
 
 
-func change_scene(target: String) -> void:
-   transition_dissolve(target)
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func transition_dissolve(target: String) -> void:
-    $AnimationPlayer.play('dissolve')
-    await $AnimationPlayer.animation_finished
-    get_tree().change_scene_to_file(target)
-    $AnimationPlayer.play_backwards('dissolve')
+func init_transition() -> void:
+    animation_player.play("dissolve")
+
+
+func finish_transition():
+    animation_player.play_backwards("dissolve")
