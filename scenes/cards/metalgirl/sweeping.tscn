@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcxsf1bu8cj0a"]
+
+[ext_resource type="Script" uid="uid://2k4h1j2357l6" path="res://scripts/cards/card.gd" id="1_ani85"]
+[ext_resource type="AudioStream" uid="uid://dbpkr0qrep2og" path="res://assets/soundeffects/attacks/sci-fi-weapon-shoot-firing-pulse-dn-02-233831.mp3" id="2_8mwjx"]
+[ext_resource type="Script" uid="uid://b5vi6tkuxmwiy" path="res://scripts/cards/effects/attack_effect.gd" id="2_urit5"]
+
+[node name="Sweeping" type="Node"]
+script = ExtResource("1_ani85")
+card_name = "Sweeping"
+energy = 2
+target_type = 0
+sound_effect = ExtResource("2_8mwjx")
+metadata/_custom_type_script = "uid://2k4h1j2357l6"
+
+[node name="AttackEffect" type="Node" parent="."]
+script = ExtResource("2_urit5")
+base_damage = 2
+metadata/_custom_type_script = "uid://b5vi6tkuxmwiy"

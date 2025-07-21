@@ -61,7 +61,6 @@ func _on_remove_from_hand(card: CardUI) -> void:
     var parent := card.get_parent()
 
     if parent == null:
-        print('No se ha podido reemparentar la carta %s' % card._card.get_card_name())
         return
 
     card.reparent(get_tree().root)

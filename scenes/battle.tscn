@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://nxejjx6lux6y"]
+[gd_scene load_steps=22 format=3 uid="uid://nxejjx6lux6y"]
 
 [ext_resource type="Texture2D" uid="uid://vmu6jsjd5oew" path="res://sprites/backgrounds/street.png" id="1_dn72j"]
 [ext_resource type="Script" uid="uid://bcv3mqukfc5g6" path="res://scripts/scenes/battle.gd" id="1_lpir7"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dxtawmj1md4fp" path="res://scenes/ui/pile_modal.tscn" id="12_03edq"]
 [ext_resource type="PackedScene" uid="uid://o2ia4jdrmi4b" path="res://scenes/ui/scene_transition.tscn" id="14_6ni85"]
 [ext_resource type="AudioStream" uid="uid://c3np05gi1toeg" path="res://assets/music/theme.mp3" id="14_vceff"]
+[ext_resource type="Script" uid="uid://d3igsb5vjoasu" path="res://scripts/utils/all_targets_dropable_area.gd" id="15_vceff"]
 
 [sub_resource type="Animation" id="Animation_6ni85"]
 length = 0.001
@@ -69,6 +70,13 @@ _data = {
 &"hide": SubResource("Animation_22uqi")
 }
 
+[sub_resource type="Gradient" id="Gradient_vceff"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ekamt"]
+gradient = SubResource("Gradient_vceff")
+
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_lpir7")
 
@@ -99,13 +107,13 @@ metadata/_custom_type_script = "uid://b56rnmt62xd1s"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Cyborg" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(365, -195)
+position = Vector2(401, -204)
 
 [node name="Cyborg2" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(476, -179)
+position = Vector2(483, -184)
 
 [node name="Cyborg3" parent="Enemies" instance=ExtResource("4_4k1nj")]
-position = Vector2(577, -198)
+position = Vector2(565, -201)
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -219,6 +227,7 @@ scale = Vector2(0.619771, 0.702067)
 text = "REDRAW"
 
 [node name="SceneTransition" parent="UI" instance=ExtResource("14_6ni85")]
+visible = false
 
 [node name="Hand" parent="." instance=ExtResource("4_a12nh")]
 offset_left = 95.0
@@ -271,6 +280,37 @@ text = "has ganado"
 stream = ExtResource("14_vceff")
 autoplay = true
 playback_type = 1
+
+[node name="AllTargetsDropableArea" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 196.0
+offset_top = -227.0
+offset_right = 356.0
+offset_bottom = -97.0
+scale = Vector2(0.912012, 0.845372)
+mouse_filter = 2
+script = ExtResource("15_vceff")
+metadata/_custom_type_script = "uid://d3igsb5vjoasu"
+
+[node name="TextureRect" type="TextureRect" parent="AllTargetsDropableArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.017
+offset_bottom = -2.21001
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ekamt")
+
+[node name="Label" type="Label" parent="AllTargetsDropableArea"]
+layout_mode = 0
+offset_left = 3.28943
+offset_top = 44.9506
+offset_right = 157.289
+offset_bottom = 76.9507
+text = "Jugar carta"
 
 [connection signal="current_energy_changed" from="Player" to="." method="_on_player_current_energy_changed"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

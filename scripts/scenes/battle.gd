@@ -14,7 +14,9 @@ extends Node2D
 @onready var pile_modal_animation_player: AnimationPlayer = $PileModalAnimationPlayer
 @onready var pile_modal: PileModal = $UI/PileModal
 @onready var scene_transition: SceneTransition = $UI/SceneTransition
+@onready var all_targets_dropable_area: AllTargetsDropableArea = $AllTargetsDropableArea
 #endregion
+
 
 const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
 
@@ -29,6 +31,7 @@ func _ready() -> void:
     energy_ui.set_max_energy(player.max_energy)
     scene_transition.visible = true
     scene_transition.init_transition()
+    all_targets_dropable_area.set_targets(enemies_parent.get_children())
 
 
 func _setup():
@@ -77,7 +80,6 @@ func _on_drawn_card(_card: Card):
     draw_counter.text = str(player.draw_pile.get_child_count())
     discard_counter.text = str(player.discard_pile.get_child_count())
 
-
 func _on_player_current_energy_changed(value: int) -> void:
     energy_ui.set_current_energy(value)
 
@@ -106,7 +108,6 @@ func _on_draw_button_pressed() -> void:
     pile_modal.pile_name = tr('Robo')
     pile_modal.update()
     pile_modal_animation_player.play("display")
-
 #endregion
 
 

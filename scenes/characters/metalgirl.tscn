@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=39 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://cd1wt7y6uxxqp" path="res://sprites/characters/metalgirl-Sheet.png" id="2_div4b"]
 [ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/cards/pile.gd" id="3_ppwyf"]
+[ext_resource type="PackedScene" uid="uid://bcxsf1bu8cj0a" path="res://scenes/cards/metalgirl/sweeping.tscn" id="4_4jynv"]
 [ext_resource type="PackedScene" uid="uid://bbm1nd6yphkxl" path="res://scenes/cards/metalgirl/mosspit.tscn" id="4_bc2xx"]
 [ext_resource type="PackedScene" uid="uid://uf8n081rxxwe" path="res://scenes/cards/metalgirl/metalbass.tscn" id="4_ppwyf"]
 [ext_resource type="PackedScene" uid="uid://bc6g2f7p8cr24" path="res://scenes/cards/metalgirl/wall_of_sound.tscn" id="5_bhie5"]
@@ -208,6 +209,8 @@ shape = SubResource("CapsuleShape2D_qkf0o")
 [node name="Deck" type="Node" parent="Piles"]
 script = ExtResource("3_ppwyf")
 metadata/_custom_type_script = "uid://bxcm4afx5th3e"
+
+[node name="Sweeping" parent="Piles/Deck" instance=ExtResource("4_4jynv")]
 
 [node name="Mosspit" parent="Piles/Deck" instance=ExtResource("4_bc2xx")]
 

@@ -9,9 +9,10 @@ signal not_dragging
 
 func _ready() -> void:
     mouse_exited.connect(_on_mouse_exited)
+    dragging_over.connect(_on_dragging_over)
 
 
-func _get_targets():
+func get_targets():
     return [get_parent()]
 
 
@@ -27,10 +28,10 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
     
     dragging_over.emit()
     return true
-    
+
 
 func _drop_data(_at_position: Vector2, card: Variant) -> void:
-    var targets = _get_targets()
+    var targets = get_targets()
 
     if card is CardUI:
         card.get_card().play_card.emit(targets)
@@ -39,6 +40,10 @@ func _drop_data(_at_position: Vector2, card: Variant) -> void:
 
 func _on_mouse_exited():
     not_dragging.emit()
+
+
+func _on_dragging_over():
+    pass
 
 
 func _gui_input(event):

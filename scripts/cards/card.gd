@@ -90,4 +90,7 @@ func get_description():
     for effect in get_effects():
         description += effect.get_description() + "\n"
 
+    if target_type == Globals.TargetType.ALL_ENEMIES:
+        description += tr("Todos los enemigos")
+
     return description
