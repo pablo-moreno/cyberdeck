@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bydyy1q7ntkmq"]
+[gd_scene load_steps=4 format=3 uid="uid://bydyy1q7ntkmq"]
 
 [ext_resource type="Script" uid="uid://csettqeopf2u" path="res://scripts/ui/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="Texture2D" uid="uid://xv22q12rhct7" path="res://sprites/backgrounds/main_menu.png" id="1_sl1te"]
+[ext_resource type="PackedScene" uid="uid://o2ia4jdrmi4b" path="res://scenes/ui/scene_transition.tscn" id="3_1g8jr"]
 
 [node name="MainMenu" type="PanelContainer"]
 offset_right = 640.0
@@ -30,6 +31,10 @@ text = "Ajustes"
 [node name="ExitButton" type="Button" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
 text = "Salir"
+
+[node name="SceneTransition" parent="." instance=ExtResource("3_1g8jr")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="TextureRect/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

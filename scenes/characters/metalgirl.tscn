@@ -218,25 +218,18 @@ metadata/_custom_type_script = "uid://bxcm4afx5th3e"
 
 [node name="Metalbass2" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
-[node name="Metalbass3" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-
 [node name="WallOfSound" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
 [node name="WallOfSound2" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
 [node name="Omen" parent="Piles/Deck" instance=ExtResource("7_sfsbp")]
 
-[node name="Metalbass4" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-
-[node name="Metalbass5" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-
-[node name="Metalbass6" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
-
-[node name="Metalbass7" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
+[node name="Metalbass3" parent="Piles/Deck" instance=ExtResource("4_ppwyf")]
 
 [node name="WallOfSound3" parent="Piles/Deck" instance=ExtResource("5_bhie5")]
 
 [node name="Shortcut" parent="Piles/Deck" instance=ExtResource("8_qw4i2")]
+energy = 1
 
 [node name="Draw" type="Node" parent="Piles"]
 script = ExtResource("3_ppwyf")

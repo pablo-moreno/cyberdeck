@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bosg1acnekdsr"]
+
+[ext_resource type="Script" uid="uid://d3igsb5vjoasu" path="res://scripts/utils/all_targets_dropable_area.gd" id="1_mh7rx"]
+
+[sub_resource type="Gradient" id="Gradient_vceff"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ekamt"]
+gradient = SubResource("Gradient_vceff")
+
+[node name="AllTargetsDropableArea" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 196.0
+offset_top = -227.0
+offset_right = 356.0
+offset_bottom = -97.0
+scale = Vector2(0.912012, 0.845372)
+mouse_filter = 2
+script = ExtResource("1_mh7rx")
+metadata/_custom_type_script = "uid://d3igsb5vjoasu"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.017
+offset_bottom = -2.21001
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ekamt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.28943
+offset_top = 44.9506
+offset_right = 157.289
+offset_bottom = 76.9507
+text = "Jugar carta"
