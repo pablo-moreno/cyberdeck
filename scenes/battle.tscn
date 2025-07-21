@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cpgoi3e6xint2" path="res://textures/circle_texture.tres" id="9_03edq"]
 [ext_resource type="Script" uid="uid://bhvkutujnevhv" path="res://scripts/ui/victory.gd" id="9_yahae"]
 [ext_resource type="PackedScene" uid="uid://dxtawmj1md4fp" path="res://scenes/ui/pile_modal.tscn" id="12_03edq"]
-[ext_resource type="AudioStream" uid="uid://c348xeg1beh4l" path="res://assets/music/main_theme.mp3" id="13_22uqi"]
 [ext_resource type="PackedScene" uid="uid://o2ia4jdrmi4b" path="res://scenes/ui/scene_transition.tscn" id="14_6ni85"]
+[ext_resource type="AudioStream" uid="uid://c3np05gi1toeg" path="res://assets/music/theme.mp3" id="14_vceff"]
 
 [sub_resource type="Animation" id="Animation_6ni85"]
 length = 0.001
@@ -268,8 +268,7 @@ scale = Vector2(0.219441, 0.525209)
 text = "has ganado"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_22uqi")
-volume_db = -5.0
+stream = ExtResource("14_vceff")
 autoplay = true
 playback_type = 1
 

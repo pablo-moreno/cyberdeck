@@ -1,5 +1,6 @@
 extends Node2D
 
+
 #region Nodes
 @onready var player: Character = $Player
 @onready var hand: Hand = $Hand
@@ -50,6 +51,9 @@ func _on_round_ended():
 
 func _on_no_enemies_left():
     victory_ui.set_victory()
+    scene_transition.finish_transition()
+    await scene_transition.animation_player.animation_finished
+    get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 
 func _on_turn_manager_turn_start(_character: Character) -> void:
