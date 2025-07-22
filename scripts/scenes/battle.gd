@@ -39,6 +39,7 @@ func _setup():
         if child is Enemy:
             turn_manager.add_enemy(child)
             child.set_player(player)
+            child.death.connect(_on_enemy_dead)
 
     turn_manager.init()
 
@@ -92,6 +93,10 @@ func _on_player_dead() -> void:
     victory_ui.set_defeat()
 
 
+func _on_enemy_dead(enemy: Enemy):
+    all_targets_dropable_area.remove_target(enemy)
+
+
 func _on_discard_button_pressed() -> void:
     pile_modal.pile_ref = player.discard_pile
     pile_modal.pile_name = tr('Descarte')
@@ -108,6 +113,7 @@ func _on_draw_button_pressed() -> void:
     pile_modal.pile_name = tr('Robo')
     pile_modal.update()
     pile_modal_animation_player.play("display")
+
 #endregion
 
 
