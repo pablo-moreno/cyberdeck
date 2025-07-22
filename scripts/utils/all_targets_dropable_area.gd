@@ -6,7 +6,7 @@ var _targets: Array[Variant] = []
 func _ready() -> void:
     super()
     target_type = Globals.TargetType.ALL_ENEMIES
-    mouse_filter = Control.MOUSE_FILTER_IGNORE
+    _hide()
 
 
 func set_targets(new_targets: Array[Variant]):
@@ -17,6 +17,11 @@ func get_targets() -> Array[Variant]:
     return _targets
 
 
+func _hide():
+    modulate = Color(Color.WHITE, 0)
+    mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
 func _on_dragging_over():
     modulate = modulate_color
     mouse_filter = Control.MOUSE_FILTER_STOP
@@ -24,11 +29,9 @@ func _on_dragging_over():
 
 func _on_mouse_exited():
     super()
-    modulate = Color(Color.WHITE, 0)
-    mouse_filter = Control.MOUSE_FILTER_IGNORE
+    _hide()
 
 
 func _on_end_dragging():
     super()
-    modulate = Color(Color.WHITE, 0)
-    mouse_filter = Control.MOUSE_FILTER_IGNORE
+    _hide()
