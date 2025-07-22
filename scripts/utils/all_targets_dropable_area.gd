@@ -24,6 +24,11 @@ func _on_dragging_over():
 
 func _on_mouse_exited():
     super()
-    
+    modulate = Color(Color.WHITE, 0)
+    mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_end_dragging():
+    super()
     modulate = Color(Color.WHITE, 0)
     mouse_filter = Control.MOUSE_FILTER_IGNORE

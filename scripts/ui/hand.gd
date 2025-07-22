@@ -23,6 +23,7 @@ func draw(new_card: CardUI) -> void:
 
 func _update_cards() -> void:
     var cards := get_child_count()
+
     var all_cards_size := Card.SIZE.x * cards + x_sep * (cards - 1)
     var final_x_sep = x_sep
 

@@ -108,8 +108,17 @@ position = Vector2(483, -184)
 [node name="Cyborg3" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(565, -201)
 
-[node name="UI" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="Hand" parent="." instance=ExtResource("4_a12nh")]
+offset_left = 95.0
+offset_top = -77.0
+offset_right = 497.0
+offset_bottom = -5.0
+scale = Vector2(1.04, 1)
+max_rotation_degrees = 4
+y_min = 0
+y_max = -10
+
+[node name="UI" type="Node" parent="."]
 
 [node name="EndTurnButton" type="Button" parent="UI"]
 offset_left = 542.0
@@ -221,16 +230,6 @@ text = "REDRAW"
 
 [node name="SceneTransition" parent="UI" instance=ExtResource("14_6ni85")]
 visible = false
-
-[node name="Hand" parent="." instance=ExtResource("4_a12nh")]
-offset_left = 95.0
-offset_top = -77.0
-offset_right = 497.0
-offset_bottom = -5.0
-scale = Vector2(1.04, 1)
-max_rotation_degrees = 4
-y_min = 0
-y_max = -10
 
 [node name="VictoryUI" type="Container" parent="."]
 visible = false

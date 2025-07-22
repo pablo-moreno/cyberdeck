@@ -10,6 +10,7 @@ signal not_dragging
 func _ready() -> void:
     mouse_exited.connect(_on_mouse_exited)
     dragging_over.connect(_on_dragging_over)
+    not_dragging.connect(_on_end_dragging)
 
 
 func get_targets():
@@ -35,6 +36,7 @@ func _drop_data(_at_position: Vector2, card: Variant) -> void:
 
     if card is CardUI:
         card.get_card().play_card.emit(targets)
+
     not_dragging.emit()
 
 
@@ -43,6 +45,10 @@ func _on_mouse_exited():
 
 
 func _on_dragging_over():
+    pass
+
+
+func _on_end_dragging():
     pass
 
 

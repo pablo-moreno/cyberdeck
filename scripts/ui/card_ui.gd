@@ -10,10 +10,10 @@ class_name CardUI extends Draggable
 @export var purple_texture: Texture2D = null
 @export var gold_texture: Texture2D = null
 
-@onready var ui: Control = $UI
-@onready var title_label: Label = $UI/MarginContainer/VBoxContainer/TitleLabel
-@onready var description_label: Label = $UI/MarginContainer/VBoxContainer/DescriptionLabel
-@onready var energy: Label = $UI/EnergyLabel
+@onready var ui: Control = $CardTexture/UI
+@onready var title_label: Label = $CardTexture/UI/MarginContainer/VBoxContainer/TitleLabel
+@onready var description_label: Label = $CardTexture/UI/MarginContainer/VBoxContainer/DescriptionLabel
+@onready var energy: Label = $CardTexture/UI/EnergyLabel
 @onready var card_texture: TextureRect = $CardTexture
 
 
@@ -71,7 +71,7 @@ func _on_mouse_entered() -> void:
         up_pixels *= 3
 
     position.y = position.y - up_pixels
-    size = size * hover_transform
+    scale = scale * hover_transform
     z_index = 100
 
 
@@ -81,7 +81,7 @@ func _on_mouse_exited() -> void:
         up_pixels *= 3
     
     position.y = position.y + up_pixels
-    size = size / hover_transform
+    scale = scale / hover_transform
     z_index = 0
 
 
