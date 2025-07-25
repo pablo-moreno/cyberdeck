@@ -90,7 +90,7 @@ anchor_mode = 0
 editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("3_p1qf1")]
-position = Vector2(133, -171)
+position = Vector2(140, -185)
 
 [node name="TurnManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_th188")
@@ -101,12 +101,15 @@ metadata/_custom_type_script = "uid://b56rnmt62xd1s"
 
 [node name="Cyborg" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(401, -204)
+modulate_color = null
 
 [node name="Cyborg2" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(483, -184)
+modulate_color = null
 
 [node name="Cyborg3" parent="Enemies" instance=ExtResource("4_4k1nj")]
 position = Vector2(565, -201)
+modulate_color = null
 
 [node name="Hand" parent="." instance=ExtResource("4_a12nh")]
 offset_left = 95.0
@@ -274,6 +277,10 @@ autoplay = true
 playback_type = 1
 
 [node name="AllTargetsDropableArea" parent="." instance=ExtResource("15_vceff")]
+offset_left = 200.0
+offset_top = -252.0
+offset_right = 360.0
+offset_bottom = -122.0
 
 [connection signal="current_energy_changed" from="Player" to="." method="_on_player_current_energy_changed"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

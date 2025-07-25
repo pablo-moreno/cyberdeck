@@ -45,6 +45,7 @@ offset_bottom = 64.0
 
 [node name="EnergyLabel" type="Label" parent="CardTexture/UI"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -1.0
 offset_top = 1.0
 offset_right = 55.0
@@ -59,6 +60,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CardTexture/UI"]
+layout_mode = 0
 offset_left = 2.33333
 offset_top = 28.6667
 offset_right = 110.333

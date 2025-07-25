@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://8ic7nydh8por"]
+[gd_scene load_steps=42 format=3 uid="uid://8ic7nydh8por"]
 
 [ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
 [ext_resource type="Texture2D" uid="uid://cd1wt7y6uxxqp" path="res://sprites/characters/metalgirl-Sheet.png" id="2_div4b"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dm3svvsygos3u" path="res://scenes/cards/metalgirl/shortcut.tscn" id="8_qw4i2"]
 [ext_resource type="Script" uid="uid://cw68u1tj5oj6p" path="res://scripts/utils/dropable_area.gd" id="10_kpmjy"]
 [ext_resource type="PackedScene" uid="uid://cbi7v731b1tpy" path="res://scenes/ui/damage_indicator.tscn" id="12_div4b"]
+[ext_resource type="Texture2D" uid="uid://cajsdbasbkwvj" path="res://sprites/icons/extra_card.png" id="12_xsot8"]
+[ext_resource type="Texture2D" uid="uid://djl278b08vebg" path="res://sprites/icons/trait_energy.png" id="14_v87jk"]
+[ext_resource type="PackedScene" uid="uid://cs5vhsk8qw1jc" path="res://scenes/ui/trait_indicator.tscn" id="16_ugl7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_div4b"]
 atlas = ExtResource("2_div4b")
@@ -255,10 +258,13 @@ metadata/_custom_type_script = "uid://crfstdtmbnfuv"
 
 [node name="ExtraDrawCard" type="Node" parent="Traits"]
 script = ExtResource("6_r71r1")
+texture = ExtResource("12_xsot8")
 metadata/_custom_type_script = "uid://b1oja3s2i1c3s"
 
 [node name="ExtraEnergyTrait" type="Node" parent="Traits"]
 script = ExtResource("7_copgy")
+texture = ExtResource("14_v87jk")
+type = 0
 metadata/_custom_type_script = "uid://c2x2a1fr37er3"
 
 [node name="TextureProgressBar" parent="." instance=ExtResource("8_1ie2l")]
@@ -284,3 +290,10 @@ metadata/_custom_type_script = "uid://cw68u1tj5oj6p"
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="TraitIndicator" parent="." instance=ExtResource("16_ugl7w")]
+offset_left = -32.0
+offset_top = 69.0
+offset_right = 0.0
+offset_bottom = 101.0
+scale = Vector2(0.5, 0.5)

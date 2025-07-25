@@ -93,6 +93,12 @@ func _end_turn():
         sprite.animation_finished.disconnect(_end_turn)
 
     turn_ended.emit(self)
+
+func take_damage(amount: int):
+    
+    
+    health.take_damage(amount)
+
 #endregion
 
 #region Attached signals

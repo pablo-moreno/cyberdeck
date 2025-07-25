@@ -12,6 +12,7 @@ class_name Character extends CharacterBody2D
 @onready var dropable_card_area: DropableCardArea = $DropableCardArea
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var trait_indicator: GridContainer = $TraitIndicator
 #endregion
 
 #region Exported variables
@@ -21,6 +22,12 @@ class_name Character extends CharacterBody2D
 @export var current_energy: int = 3
 @export var modulate_color: Color = Color(0.0, 0.863, 0.863)
 @export var keep_hand: bool = false
+#endregion
+
+#region Internal variables
+var _damage_multiplier: float = 1.0
+var POPUP_ICON := preload("res://scenes/ui/popup_icon.tscn")
+
 #endregion
 
 #region Signals
@@ -38,15 +45,34 @@ signal dead
 
 
 func _ready() -> void:
+    _attach_signals()
+    _setup_ui()
     move_cards_to_draw()
+    sprite.play('idle')
+    apply_effects(Trait.TYPE.BATTLE)
+
+
+func _setup_ui():
+    damage_indicator.visible = true
+    
+    for _trait in traits.get_children():
+        if _trait is not Trait:
+            continue
+        
+        var icon: PopupIcon = POPUP_ICON.instantiate()
+        icon.texture = _trait.texture
+        icon.text = _trait.get_description()
+        trait_indicator.add_child(icon)
+
+
+
+func _attach_signals():
     health.death.connect(_on_death)
     Globals.discard_card.connect(discard_card)
     Globals.exhaust_card.connect(exhaust_card)
     started_player_turn.connect(start_turn)
     dropable_card_area.dragging_over.connect(_on_dropable_area_dragging_over)
     dropable_card_area.not_dragging.connect(_on_dropable_area_not_dragging)
-    sprite.play('idle')
-    damage_indicator.visible = true
     sprite.animation_finished.connect(_on_animation_finished)
 
 
@@ -105,6 +131,12 @@ func discard_card(card: Card):
 
 func exhaust_card(card: Card):
     card.move_to(exhaust_pile)
+#endregion
+
+#region Attacks, traits and buffs
+func apply_damage_to_enemy(enemy: Enemy, amount: float):
+    var damage = amount * _damage_multiplier
+    enemy.take_damage(amount)
 
 #endregion
 
@@ -121,24 +153,26 @@ func play_sound_effect(stream: AudioStreamMP3):
 #region Turn management
 func end_turn():
     ended_player_turn.emit()
+    apply_effects(Trait.TYPE.END_TURN)
 
 
 func start_turn():
-    apply_effects()
+    apply_effects(Trait.TYPE.START_TURN)
     draw_round_cards()
     reset_energy()
     health.reset_shield()
     Globals.set_energy_remaining(current_energy)
 
 
-func apply_effects():
+func apply_effects(type: Trait.TYPE):
     var _traits = traits.get_children()
     
     for _trait in _traits:
-        if _trait is not Trait:
+        if _trait is not Trait or _trait.type != type:
             continue
 
         _trait.apply(self)
+
 #endregion
 
 #region Energy

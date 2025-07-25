@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cs5vhsk8qw1jc"]
+
+[node name="TraitIndicator" type="GridContainer"]
+anchors_preset = -1
+anchor_right = 0.422
+anchor_bottom = 0.153
+offset_right = -270.08
+offset_bottom = -55.08
+columns = 25
