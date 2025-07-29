@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cne8xee3xbgxr"]
+[gd_scene load_steps=3 format=3 uid="uid://cne8xee3xbgxr"]
 
+[ext_resource type="Texture2D" uid="uid://bkl2s5cdlurwv" path="res://sprites/icons/damage.png" id="1_or520"]
 [ext_resource type="Script" uid="uid://cv3fkk86lyosl" path="res://scripts/ui/popup_icon.gd" id="2_or520"]
 
 [node name="PopupIcon" type="TextureRect"]
+offset_right = 16.0
+offset_bottom = 16.0
 mouse_default_cursor_shape = 2
+texture = ExtResource("1_or520")
 script = ExtResource("2_or520")
 
 [node name="PopupPanel" type="PopupPanel" parent="."]

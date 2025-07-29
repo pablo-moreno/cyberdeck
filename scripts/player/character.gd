@@ -65,7 +65,6 @@ func _setup_ui():
         trait_indicator.add_child(icon)
 
 
-
 func _attach_signals():
     health.death.connect(_on_death)
     Globals.discard_card.connect(discard_card)

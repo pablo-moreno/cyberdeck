@@ -1,0 +1,1 @@
+class_name Metalgirl extends Character

@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://8ic7nydh8por"]
 
-[ext_resource type="Script" uid="uid://dhqdjhjlyeytj" path="res://scripts/player/character.gd" id="1_cxrlw"]
+[ext_resource type="Script" uid="uid://y2qqbnsrqy6m" path="res://scripts/player/metalgirl.gd" id="1_xsot8"]
 [ext_resource type="Texture2D" uid="uid://cd1wt7y6uxxqp" path="res://sprites/characters/metalgirl-Sheet.png" id="2_div4b"]
 [ext_resource type="Script" uid="uid://bxcm4afx5th3e" path="res://scripts/cards/pile.gd" id="3_ppwyf"]
 [ext_resource type="PackedScene" uid="uid://bcxsf1bu8cj0a" path="res://scenes/cards/metalgirl/sweeping.tscn" id="4_4jynv"]
@@ -192,16 +192,14 @@ radius = 44.0
 height = 104.0
 
 [node name="Metalgirl" type="CharacterBody2D"]
-script = ExtResource("1_cxrlw")
+script = ExtResource("1_xsot8")
 metadata/_custom_type_script = "uid://dhqdjhjlyeytj"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_myut4")
-animation = &"attack"
-frame = 6
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
